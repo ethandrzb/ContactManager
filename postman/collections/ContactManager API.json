@@ -1,0 +1,338 @@
+{
+	"info": {
+		"_postman_id": "a6566be4-116f-4526-ab46-3216b2322dcf",
+		"name": "ContactManager API",
+		"description": "ContactManager API for POOSD SPG9",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "25605799-a6566be4-116f-4526-ab46-3216b2322dcf"
+	},
+	"item": [
+		{
+			"name": "contacts",
+			"item": [
+				{
+					"name": "searches contact list",
+					"id": "da782a82-78fe-4db4-ba7c-3deeb527a46c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/contacts?searchString=aute qui eiusmod&skip=63097944&limit=20",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"contacts"
+							],
+							"query": [
+								{
+									"key": "searchString",
+									"value": "aute qui eiusmod",
+									"description": "pass an optional search string for looking up contacts"
+								},
+								{
+									"key": "skip",
+									"value": "63097944",
+									"description": "number of records to skip for pagination"
+								},
+								{
+									"key": "limit",
+									"value": "20",
+									"description": "maximum number of records to return"
+								}
+							]
+						},
+						"description": "By passing in the appropriate options, you can search for contacts\nin the system\n"
+					},
+					"response": [
+						{
+							"id": "f3733180-6cab-4ee5-bffa-88614c555ea2",
+							"name": "search results matching criteria",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/contacts?searchString=aute qui eiusmod&skip=63097944&limit=20",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contacts"
+									],
+									"query": [
+										{
+											"key": "searchString",
+											"value": "aute qui eiusmod",
+											"description": "pass an optional search string for looking up contacts"
+										},
+										{
+											"key": "skip",
+											"value": "63097944",
+											"description": "number of records to skip for pagination"
+										},
+										{
+											"key": "limit",
+											"value": "20",
+											"description": "maximum number of records to return"
+										}
+									]
+								},
+								"description": "By passing in the appropriate options, you can search for contacts\nin the system\n"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"firstName\": \"John\",\n    \"ownerID\": 1,\n    \"dateCreated\": \"2016-08-29T09:12:33.001Z\",\n    \"id\": 1,\n    \"lastName\": \"Doe\",\n    \"phoneNumber\": \"123-456-7890\",\n    \"email\": \"you@mail.com\"\n  },\n  {\n    \"firstName\": \"John\",\n    \"ownerID\": 1,\n    \"dateCreated\": \"2016-08-29T09:12:33.001Z\",\n    \"id\": 1,\n    \"lastName\": \"Doe\",\n    \"phoneNumber\": \"123-456-7890\",\n    \"email\": \"you@mail.com\"\n  }\n]"
+						},
+						{
+							"id": "15ef4a49-d28c-4ef2-b70f-28fc44ba415e",
+							"name": "bad input parameter",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/contacts?searchString=aute qui eiusmod&skip=63097944&limit=20",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contacts"
+									],
+									"query": [
+										{
+											"key": "searchString",
+											"value": "aute qui eiusmod",
+											"description": "pass an optional search string for looking up contacts"
+										},
+										{
+											"key": "skip",
+											"value": "63097944",
+											"description": "number of records to skip for pagination"
+										},
+										{
+											"key": "limit",
+											"value": "20",
+											"description": "maximum number of records to return"
+										}
+									]
+								},
+								"description": "By passing in the appropriate options, you can search for contacts\nin the system\n"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "adds a contact",
+					"id": "2015f5c6-0b6c-4cb4-816c-ead750e7fad9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John\",\n  \"ownerID\": 1,\n  \"dateCreated\": \"2016-08-29T09:12:33.001Z\",\n  \"id\": 1,\n  \"lastName\": \"Doe\",\n  \"phoneNumber\": \"123-456-7890\",\n  \"email\": \"you@mail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/contacts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"contacts"
+							]
+						},
+						"description": "Adds a contact to the system"
+					},
+					"response": [
+						{
+							"id": "c731572c-120d-45bc-ba80-6b1844919b66",
+							"name": "item created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"John\",\n  \"ownerID\": 1,\n  \"dateCreated\": \"2016-08-29T09:12:33.001Z\",\n  \"id\": 1,\n  \"lastName\": \"Doe\",\n  \"phoneNumber\": \"123-456-7890\",\n  \"email\": \"you@mail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/contacts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contacts"
+									]
+								},
+								"description": "Adds a contact to the system"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"id": "b509efbe-3059-4f3d-bd6f-09e4248d860e",
+							"name": "invalid input, object invalid",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"John\",\n  \"ownerID\": 1,\n  \"dateCreated\": \"2016-08-29T09:12:33.001Z\",\n  \"id\": 1,\n  \"lastName\": \"Doe\",\n  \"phoneNumber\": \"123-456-7890\",\n  \"email\": \"you@mail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/contacts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contacts"
+									]
+								},
+								"description": "Adds a contact to the system"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"id": "dd3bd779-79bc-4a39-bb22-deb6125d4d40",
+							"name": "an existing item already exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"John\",\n  \"ownerID\": 1,\n  \"dateCreated\": \"2016-08-29T09:12:33.001Z\",\n  \"id\": 1,\n  \"lastName\": \"Doe\",\n  \"phoneNumber\": \"123-456-7890\",\n  \"email\": \"you@mail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/contacts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contacts"
+									]
+								},
+								"description": "Adds a contact to the system"
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"id": "790c8fe6-93ff-4aed-84f7-419be950c7ba"
+		}
+	],
+	"variable": [
+		{
+			"id": "9e95239a-d6cf-430f-8e87-285407ddef85",
+			"key": "baseUrl",
+			"value": "https://virtserver.swaggerhub.com/thomase/ContactManager/1.0.0",
+			"type": "string"
+		}
+	]
+}
