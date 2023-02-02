@@ -11,6 +11,7 @@ files[] = {"id":"25605799-a6566be4-116f-4526-ab46-3216b2322dcf","path":"ContactM
 
 [relations.apiDefinition]
 rootDirectory = postman/schemas
+files[] = {"path":"ContactManagerAPI.yml","metaData":{}}
 
 [relations.apiDefinition.metaData]
 type = openapi:3
