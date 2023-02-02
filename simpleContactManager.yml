@@ -1,0 +1,216 @@
+################################################################
+#  Documented with reference to Leinecker's Color App example  #
+################################################################
+
+swagger: '2.0'
+
+info:
+    description: A Simple Contact Manager's API Documentation
+    version: 1.0.0
+    title: A Simple Contact Manager
+    contact: 
+        email: 'joeyhodson@knights.ucf.edu'
+    license:
+        name: Apache 2.0
+        url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+paths:
+    # The two login apis likely need some sort of authentication 
+    # embedded in definitions below
+    /login/login.php:
+        post:
+            tags:
+                - Users
+            summary: Logs user into contact manager
+            operationId: userLogin
+            description: Logs user into contact manager
+            consumes:
+                - application/json
+            produces:
+                - application/json
+            parameters:
+                - in: body
+                name: loginObject
+                description: User Login
+                schema:
+                    $ref: '#definitions/Login'
+                responses:
+                    200:
+                        desciption: OK
+                    404:
+                        description: URL Not Found
+    /login/createUser.php:
+        post:
+            tags:
+                - Users
+            summary: Logs user into contact manager
+            operationId: createUser
+            description: Adds a user to the manager's database
+            consumes:
+                - application/json
+            produces:
+                - application/json
+            parameters:
+                - in: body
+                name: loginObject
+                description: User Login
+                schema:
+                    $ref: '#definitions/Login'
+                responses:
+                    200:
+                        desciption: OK
+                    404:
+                        description: URL Not Found
+    /contacts/createContact.php:
+        post:
+            tags:
+                - Contact
+            summary: Adds a contact
+            operationId: createContact
+            description: Adds a contact to the manager's database
+            consumes:
+                - application/json
+            produces:
+                - application/json
+            parameters:
+                - in: body
+                name: contactObject
+                description: Add Contact
+                schema:
+                    $ref: '#definitions/Contact'
+            responses:
+                200:
+                    description: OK
+                404:
+                    description: URL Not Found
+    # rework editContact
+    /contacts/editContact.php:
+        post:
+            tags:
+                - Search
+            summary: Edits a contact
+            operationId: searchContact
+            description: Searches for contact within the manager's database
+            consumes:
+                - application/json
+            produces:
+                - application/json
+            parameters:
+                - in: body
+                name: searchObject
+                description: Contact Search
+                schema:
+                    $ref: '#/definitions/Search'
+            responses:
+                200:
+                    description: OK
+                404:
+                    description: URL Not Found
+        put:
+            # ^ may be required rather than post ^
+    # rework removeContact
+    /contacts/removeContact.php:
+        post:
+            tags:
+                - Search
+            summary: Searches contacts
+            operationId: searchContact
+            description: Searches for contact within the manager's database
+            consumes:
+                - application/json
+            produces:
+                - application/json
+            parameters:
+                - in: body
+                name: searchObject
+                description: Contact Search
+                schema:
+                    $ref: '#/definitions/Search'
+            responses:
+                200:
+                    description: OK
+                404:
+                    description: URL Not Found
+    /contacts/searchContact.php:
+        post:
+            tags:
+                - Search
+            summary: Searches contacts
+            operationId: searchContact
+            description: Searches for contact within the manager's database
+            consumes:
+                - application/json
+            produces:
+                - application/json
+            parameters:
+                - in: body
+                name: searchObject
+                description: Contact Search
+                schema:
+                    $ref: '#/definitions/Search'
+            responses:
+                200:
+                    description: OK
+                404:
+                    description: URL Not Found
+        get:
+        # ^ likely needs a get as well / 'in: query' may be preferred ^
+
+definitions:
+    Login:
+        type: object
+        required:
+            - login
+            - uuid
+            - password
+        properties:
+            login:
+                type: string
+                example: "jhods"
+            uuid:
+                type: int
+                example: 123456
+            password:
+                type: string
+                example: "secret"
+    Contact:
+        type: object
+        required:
+            - firstName
+            - lastName
+            - email
+            - phoneNumber
+            - entryDate
+        properties:
+            firstName:
+                type: string
+                example: "Joey"
+            lastName:
+                type: string
+                example: "Hodson"
+            email:
+                type: string
+                example: "Joeyhodson@knights.ucf.edu"
+            phoneNumber:
+                type: int
+                example: 1234567890
+            entryDate:
+                type: string
+                example: "02-01-2023-09:12:33.001Z"
+    Search:
+        type: object
+        required:
+            - uuid
+            - searchEntry
+        properties:
+            uuid:
+                type: integer
+                example: 1
+            searchEntry:
+                type: string
+                example: "Jo"
+
+host: http://cop4331-2023.xyz/
+basePath: /service
+schemes:
+    - https
