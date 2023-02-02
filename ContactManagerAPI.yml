@@ -1,88 +1,179 @@
+################################################################
+#  Documented with reference to Leinecker's Color App example  #
+################################################################
+
 swagger: '2.0'
+
 info:
-  description: ContactManager API for POOSD SPG9
-  version: 1.0.0
-  title: ContactManager API
-  # put the contact info for your development or API team
-  # contact:
-  #   email: you@your-company.com
-
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-
-# tags are used for organizing operations
-tags:
-- name: admins
-  description: Secured Admin-only calls
-- name: developers
-  description: Operations available to regular developers
+    description: A Simple Contact Manager's API Documentation
+    version: 1.0.0
+    title: A Simple Contact Manager
+    contact:
+        email: 'joeyhodson@knights.ucf.edu'
+    license:
+        name: Apache 2.0
+        url: http://www.apache.org/licenses/LICENSE-2.0.html
 
 paths:
-  /contacts:
-    get:
-      tags:
-      - developers
-      summary: searches contact list
-      operationId: searchContacts
-      description: |
-        By passing in the appropriate options, you can search for contacts
-        in the system
-      produces:
-      - application/json
-      parameters:
-      - in: query
-        name: searchString
-        description: pass an optional search string for looking up contacts
-        required: false
-        type: string
-      - in: query
-        name: skip
-        description: number of records to skip for pagination
-        type: integer
-        format: int32
-        minimum: 0
-      - in: query
-        name: limit
-        description: maximum number of records to return
-        type: integer
-        format: int32
-        minimum: 0
-        maximum: 50
-      responses:
-        200:
-          description: search results matching criteria
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Contact'
-        400:
-          description: bad input parameter
-    post:
-      tags:
-      - admins
-      summary: adds a contact
-      operationId: addContact
-      description: Adds a contact to the system
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: contact
-        description: Contact to add
-        schema:
-          $ref: '#/definitions/Contact'
-      responses:
-        201:
-          description: item created
-        400:
-          description: invalid input, object invalid
-        409:
-          description: an existing item already exists
+    # The two login apis likely need some sort of authentication
+    # embedded in definitions below
+    /login/login.php:
+        post:
+            tags:
+                - Users
+            summary: Logs user into contact manager
+            operationId: userLogin
+            description: Logs user into contact manager
+            consumes:
+                - application/json
+            produces:
+                - application/json
+            parameters:
+                - in: body
+                name: loginObject
+                description: User Login
+                schema:
+                    $ref: '#definitions/Login'
+                responses:
+                    200:
+                        desciption: OK
+                    404:
+                        description: URL Not Found
+    /login/createUser.php:
+        post:
+            tags:
+                - Users
+            summary: Logs user into contact manager
+            operationId: createUser
+            description: Adds a user to the manager's database
+            consumes:
+                - application/json
+            produces:
+                - application/json
+            parameters:
+                - in: body
+                name: loginObject
+                description: User Login
+                schema:
+                    $ref: '#definitions/Login'
+                responses:
+                    200:
+                        desciption: OK
+                    404:
+                        description: URL Not Found
+    /contacts/createContact.php:
+        post:
+            tags:
+                - Contact
+            summary: Adds a contact
+            operationId: createContact
+            description: Adds a contact to the manager's database
+            consumes:
+                - application/json
+            produces:
+                - application/json
+            parameters:
+                - in: body
+                name: contactObject
+                description: Add Contact
+                schema:
+                    $ref: '#definitions/Contact'
+            responses:
+                200:
+                    description: OK
+                404:
+                    description: URL Not Found
+    # rework editContact
+    /contacts/editContact.php:
+        post:
+            tags:
+                - Search
+            summary: Edits a contact
+            operationId: searchContact
+            description: Searches for contact within the manager's database
+            consumes:
+                - application/json
+            produces:
+                - application/json
+            parameters:
+                - in: body
+                name: searchObject
+                description: Contact Search
+                schema:
+                    $ref: '#/definitions/Search'
+            responses:
+                200:
+                    description: OK
+                404:
+                    description: URL Not Found
+        put:
+            # ^ may be required rather than post ^
+    # rework removeContact
+    /contacts/removeContact.php:
+        post:
+            tags:
+                - Search
+            summary: Searches contacts
+            operationId: searchContact
+            description: Searches for contact within the manager's database
+            consumes:
+                - application/json
+            produces:
+                - application/json
+            parameters:
+                - in: body
+                name: searchObject
+                description: Contact Search
+                schema:
+                    $ref: '#/definitions/Search'
+            responses:
+                200:
+                    description: OK
+                404:
+                    description: URL Not Found
+    /contacts/searchContact.php:
+        post:
+            tags:
+                - Search
+            summary: Searches contacts
+            operationId: searchContact
+            description: Searches for contact within the manager's database
+            consumes:
+                - application/json
+            produces:
+                - application/json
+            parameters:
+                - in: body
+                name: searchObject
+                description: Contact Search
+                schema:
+                    $ref: '#/definitions/Search'
+            responses:
+                200:
+                    description: OK
+                404:
+                    description: URL Not Found
+        get:
+        # ^ likely needs a get as well / 'in: query' may be preferred ^
+
 definitions:
-  Contact:
+    Login:
+        type: object
+        required:
+            - login
+            - uuid
+            - password
+        properties:
+            login:
+                type: string
+                example: "jhods"
+            uuid:
+                type: int
+                example: 123456
+            password:
+                type: string
+                example: "secret"
+    Contact:
     type: object
     required:
     - firstName
@@ -131,10 +222,8 @@ definitions:
       password:
         type: string
         example: 9dfgs687sd
-# Added by API Auto Mocking Plugin
-host: virtserver.swaggerhub.com
-# basePath: /thomase/example/1.0.0
+
+host: http://cop4331-2023.xyz/
+basePath: /service
 schemes:
- - https
-# Added by API Auto Mocking Plugin
-basePath: /thomase/ContactManager/1.0.0
+    - https
