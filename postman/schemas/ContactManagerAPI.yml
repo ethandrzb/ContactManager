@@ -57,11 +57,12 @@ paths:
             produces:
                 - application/json
             parameters:
-                - in: body
-                name: loginObject
-                description: User Login
-                schema:
-                    $ref: '#definitions/Login'
+                username:
+                    in: query
+                    type: string
+                password:
+                    in: query
+                    type: string
                 responses:
                     200:
                         desciption: OK
