@@ -2,8 +2,6 @@
 #  Documented with reference to Leinecker's Color App example  #
 ################################################################
 
-swagger: '2.0'
-
 info:
     description: A Simple Contact Manager's API Documentation
     version: 1.0.0
@@ -212,9 +210,16 @@ definitions:
 
 components:
     securitySchemes:
-        basicAuth:
+        tokenAuth:
             type: http
-            scheme: jwt
+            scheme: bearer
+            bearerFormat: JWT
+    responses:
+        UnauthorizedError:
+            description: Access token is missing or invalid
+
+security:
+    - tokenAuth: []
 
 host: http://cop4331-2023.xyz/
 basePath: /service
