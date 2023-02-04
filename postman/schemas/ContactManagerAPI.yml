@@ -41,14 +41,16 @@ paths:
                 responses:
                     200:
                         desciption: OK
+                    401:
+                        $ref: '#/components/responses/UnauthorizedError'
                     404:
                         description: URL Not Found
-    /login/createUser.php:
+    /login/registerUser.php:
         post:
             tags:
                 - Users
-            summary: Logs user into contact manager
-            operationId: createUser
+            summary: Creates new user and registers them in the application
+            operationId: registerUser
             description: Adds a user to the manager's database
             consumes:
                 - application/json
@@ -63,8 +65,6 @@ paths:
                 responses:
                     200:
                         desciption: OK
-                    401:
-                        $ref: '#/components/responses/UnauthorizedError'
                     404:
                         description: URL Not Found
     /contacts/createContact.php:
