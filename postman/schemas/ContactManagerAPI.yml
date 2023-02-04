@@ -29,11 +29,14 @@ paths:
             produces:
                 - application/json
             parameters:
-                - in: body
-                name: loginObject
-                description: User Login
-                schema:
-                    $ref: '#definitions/Login'
+            - in: query
+            name: username
+            schema:
+                type: string
+            - in: query
+            name: password
+            schema:
+                type: string
                 responses:
                     200:
                         desciption: OK
@@ -157,22 +160,6 @@ paths:
         # ^ likely needs a get as well / 'in: query' may be preferred ^
 
 definitions:
-    Login:
-        type: object
-        required:
-            - login
-            - uuid
-            - password
-        properties:
-            login:
-                type: string
-                example: "jhods"
-            uuid:
-                type: int
-                example: 123456
-            password:
-                type: string
-                example: "secret"
     Contact:
     type: object
     required:
@@ -222,6 +209,12 @@ definitions:
       password:
         type: string
         example: 9dfgs687sd
+
+components:
+    securitySchemes:
+        basicAuth:
+            type: http
+            scheme: jwt
 
 host: http://cop4331-2023.xyz/
 basePath: /service
