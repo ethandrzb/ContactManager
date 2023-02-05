@@ -40,11 +40,9 @@ paths:
                                 password:
                                     type: string
                                     format: password
-            produces:
-                - application/json
             responses:
                 200:
-                    desciption: Logged in successfully
+                    description: Logged in successfully
                     content:
                         application/json:
                             schema:
@@ -66,10 +64,10 @@ paths:
             operationId: registerUser
             description: Adds a user to the manager's database
             security: []    # No security required
-            consumes:
-                - application/json
-            produces:
-                - application/json
+            # consumes:
+            #     - application/json
+            # produces:
+            #     - application/json
             parameters:
                 username:
                     in: query
@@ -77,11 +75,11 @@ paths:
                 password:
                     in: query
                     type: string
-                responses:
-                    200:
-                        desciption: OK
-                    404:
-                        description: URL Not Found
+            responses:
+                200:
+                    description: OK
+                404:
+                    description: URL Not Found
     /contacts/createContact.php:
         post:
             tags:
@@ -89,16 +87,16 @@ paths:
             summary: Adds a contact
             operationId: createContact
             description: Adds a contact to the manager's database
-            consumes:
-                - application/json
-            produces:
-                - application/json
+            # consumes:
+            #     - application/json
+            # produces:
+            #     - application/json
             parameters:
-                - in: body
-                name: contactObject
-                description: Add Contact
-                schema:
-                    $ref: '#definitions/Contact'
+                - name: contactObject
+                  in: query
+                  description: Add Contact
+                  schema:
+                      $ref: '#definitions/Contact'
             responses:
                 200:
                     description: OK
@@ -108,22 +106,22 @@ paths:
                     description: URL Not Found
     # rework editContact
     /contacts/editContact.php:
-        post:
+        put:
             tags:
-                - Search
+                - Edit
             summary: Edits a contact
-            operationId: searchContact
-            description: Searches for contact within the manager's database
-            consumes:
-                - application/json
-            produces:
-                - application/json
+            operationId: editContact
+            description: Edits a specific contact
+            # consumes:
+            #     - application/json
+            # produces:
+            #     - application/json
             parameters:
-                - in: body
-                name: searchObject
-                description: Contact Search
-                schema:
-                    $ref: '#/definitions/Search'
+                - name: contactObject
+                  in: query
+                  description: Contact to be edited
+                  schema:
+                      $ref: '#/definitions/Contact'
             responses:
                 200:
                     description: OK
@@ -131,26 +129,24 @@ paths:
                     $ref: '#/components/responses/UnauthorizedError'
                 404:
                     description: URL Not Found
-        put:
-            # ^ may be required rather than post ^
     # rework removeContact
     /contacts/removeContact.php:
-        post:
+        delete:
             tags:
-                - Search
-            summary: Searches contacts
-            operationId: searchContact
-            description: Searches for contact within the manager's database
-            consumes:
-                - application/json
-            produces:
-                - application/json
+                - Remove
+            summary: Removes a contact
+            operationId: removeContact
+            description: Removes a specific contact
+            # consumes:
+            #     - application/json
+            # produces:
+            #     - application/json
             parameters:
-                - in: body
-                name: searchObject
-                description: Contact Search
-                schema:
-                    $ref: '#/definitions/Search'
+                - name: contactObject
+                  in: query
+                  description: Contact to be removed
+                  schema:
+                      $ref: '#/definitions/Contact'
             responses:
                 200:
                     description: OK
@@ -159,22 +155,22 @@ paths:
                 404:
                     description: URL Not Found
     /contacts/searchContact.php:
-        post:
+        get:
             tags:
                 - Search
             summary: Searches contacts
             operationId: searchContact
             description: Searches for contact within the manager's database
-            consumes:
-                - application/json
-            produces:
-                - application/json
+            # consumes:
+            #     - application/json
+            # produces:
+            #     - application/json
             parameters:
-                - in: body
-                name: searchObject
-                description: Contact Search
-                schema:
-                    $ref: '#/definitions/Search'
+                - name: searchObject
+                  in: query 
+                  description: Contact Search
+                  schema:
+                      $ref: '#/definitions/Search'
             responses:
                 200:
                     description: OK
@@ -182,9 +178,6 @@ paths:
                     $ref: '#/components/responses/UnauthorizedError'
                 404:
                     description: URL Not Found
-        get:
-        # ^ likely needs a get as well / 'in: query' may be preferred ^
-
 definitions:
     Contact:
     type: object
@@ -195,47 +188,46 @@ definitions:
     - dateCreated
     - id
     properties:
-      firstName:
+        firstName:
         type: string
         example: John
-      lastName:
+        lastName:
         type: string
         example: Doe
-      phoneNumber:
+        phoneNumber:
         type: string
         example: 123-456-7890
-      email:
+        email:
         type: string
         example: you@mail.com
-      dateCreated:
+        dateCreated:
         type: string
         format: date-time
         example: '2016-08-29T09:12:33.001Z'
-      userID:
+        userID:
         description: ID of owner/user
         type: integer
         example: 1
-      id:
+        id:
         description: Unique identifier for this contact
         type: integer
         example: 1
-  User:
-    type: object
-    required:
-      - username
-      - userID
-      - password
-    properties:
-      username:
-        type: string
-        example: username123
-      userID:
-        type: integer
-        example: 1
-      password:
-        type: string
-        example: 9dfgs687sd
-
+    User:
+        type: object
+        required:
+        - username
+        # - userID
+        - password
+        properties:
+            username:
+                type: string
+                example: username123
+            userID:
+                type: integer
+                example: 1
+            password:
+                type: string
+                example: 9dfgs687sd
 components:
     securitySchemes:
         bearerAuth:
