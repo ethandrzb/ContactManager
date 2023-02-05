@@ -30,16 +30,7 @@ paths:
                 content:
                     application/json:
                         schema:
-                            type: object
-                            required:
-                                - username
-                                - password
-                            properties:
-                                username:
-                                    type: string
-                                password:
-                                    type: string
-                                    format: password
+                            $ref: '#/components/schemas/User'
             responses:
                 200:
                     description: Logged in successfully
@@ -73,16 +64,7 @@ paths:
                 content:
                     application/json:
                         schema:
-                            type: object
-                            required:
-                                - username
-                                - password
-                            properties:
-                                username:
-                                    type: string
-                                password:
-                                    type: string
-                                    format: password
+                            $ref: '#/components/schemas/User'
             responses:
                 200:
                     description: OK
@@ -104,7 +86,7 @@ paths:
                   in: query
                   description: Add Contact
                   schema:
-                      $ref: '#definitions/Contact'
+                      $ref: '#/components/schemas/Contact'
             responses:
                 200:
                     description: OK
@@ -129,7 +111,7 @@ paths:
                   in: query
                   description: Contact to be edited
                   schema:
-                      $ref: '#/definitions/Contact'
+                      $ref: '#/components/schemas/Contact'
             responses:
                 200:
                     description: OK
@@ -154,7 +136,7 @@ paths:
                   in: query
                   description: Contact to be removed
                   schema:
-                      $ref: '#/definitions/Contact'
+                      $ref: '#/components/schemas/Contact'
             responses:
                 200:
                     description: OK
@@ -233,7 +215,6 @@ components:
             type: object
             required:
             - username
-            # - userID
             - password
             properties:
                 username:
@@ -242,9 +223,11 @@ components:
                 userID:
                     type: integer
                     example: 1
+                    # Use default value for ID if object is used to transmit credentials during login and register
                     default: -1
                 password:
                     type: string
+                    format: password
                     example: 9dfgs687sd
 
 security:
