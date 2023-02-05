@@ -35,7 +35,6 @@ paths:
                 password:
                     in: query
                     type: string
-                
             schema:
                 type: string
                 responses:
@@ -70,6 +69,8 @@ paths:
                         description: URL Not Found
     /contacts/createContact.php:
         post:
+            security:
+                - bearerAuth: []
             tags:
                 - Contact
             summary: Adds a contact
@@ -95,6 +96,8 @@ paths:
     # rework editContact
     /contacts/editContact.php:
         post:
+            security:
+                - bearerAuth: []
             tags:
                 - Search
             summary: Edits a contact
@@ -122,6 +125,8 @@ paths:
     # rework removeContact
     /contacts/removeContact.php:
         post:
+            security:
+                - bearerAuth: []
             tags:
                 - Search
             summary: Searches contacts
@@ -146,6 +151,8 @@ paths:
                     description: URL Not Found
     /contacts/searchContact.php:
         post:
+            security:
+                - bearerAuth: []
             tags:
                 - Search
             summary: Searches contacts
@@ -224,16 +231,13 @@ definitions:
 
 components:
     securitySchemes:
-        tokenAuth:
+        bearerAuth:
             type: http
             scheme: bearer
             bearerFormat: JWT
     responses:
         UnauthorizedError:
             description: Access token is missing or invalid
-
-security:
-    - tokenAuth: []
 
 host: http://cop4331-2023.xyz/
 basePath: /service
