@@ -24,26 +24,40 @@ paths:
             summary: Logs user into contact manager
             operationId: userLogin
             description: Logs user into contact manager
-            consumes:
-                - application/json
+            security: []    # No security required
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            required:
+                                - username
+                                - password
+                            properties:
+                                username:
+                                    type: string
+                                password:
+                                    type: string
+                                    format: password
             produces:
                 - application/json
-            parameters:
-                username:
-                    in: query
-                    type: string
-                password:
-                    in: query
-                    type: string
-            schema:
-                type: string
-                responses:
-                    200:
-                        desciption: OK
-                    401:
-                        $ref: '#/components/responses/UnauthorizedError'
-                    404:
-                        description: URL Not Found
+            responses:
+                200:
+                    desciption: Logged in successfully
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    token:
+                                        type: string
+                                        format: jwt
+                                        description: JSON web token used for future requests
+                401:
+                    $ref: '#/components/responses/UnauthorizedError'
+                404:
+                    description: URL Not Found
     /login/registerUser.php:
         post:
             tags:
@@ -51,6 +65,7 @@ paths:
             summary: Creates new user and registers them in the application
             operationId: registerUser
             description: Adds a user to the manager's database
+            security: []    # No security required
             consumes:
                 - application/json
             produces:
@@ -69,8 +84,6 @@ paths:
                         description: URL Not Found
     /contacts/createContact.php:
         post:
-            security:
-                - bearerAuth: []
             tags:
                 - Contact
             summary: Adds a contact
@@ -96,8 +109,6 @@ paths:
     # rework editContact
     /contacts/editContact.php:
         post:
-            security:
-                - bearerAuth: []
             tags:
                 - Search
             summary: Edits a contact
@@ -125,8 +136,6 @@ paths:
     # rework removeContact
     /contacts/removeContact.php:
         post:
-            security:
-                - bearerAuth: []
             tags:
                 - Search
             summary: Searches contacts
@@ -151,8 +160,6 @@ paths:
                     description: URL Not Found
     /contacts/searchContact.php:
         post:
-            security:
-                - bearerAuth: []
             tags:
                 - Search
             summary: Searches contacts
@@ -239,6 +246,8 @@ components:
         UnauthorizedError:
             description: Access token is missing or invalid
 
+security:
+    - bearerAuth: []
 host: http://cop4331-2023.xyz/
 basePath: /service
 schemes:
