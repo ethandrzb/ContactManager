@@ -203,10 +203,6 @@ components:
                     type: string
                     format: date-time
                     example: '2016-08-29T09:12:33.001Z'
-                userID:
-                    description: ID of owner/user
-                    type: integer
-                    example: 1
                 id:
                     description: Unique identifier for this contact
                     type: integer
@@ -220,11 +216,6 @@ components:
                 username:
                     type: string
                     example: username123
-                userID:
-                    type: integer
-                    example: 1
-                    # Use default value for ID if object is used to transmit credentials during login and register
-                    default: -1
                 password:
                     type: string
                     format: password
