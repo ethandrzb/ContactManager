@@ -1,0 +1,20 @@
+@startuml
+
+:User:
+:Database:
+
+Rectangle Login {
+    (Register Account)
+    (Log In)
+}
+
+Rectangle Contacts {
+    (Add Contact)
+    (View Contact)
+    (Edit Contact Data)
+    (Search Contacts)
+}
+
+
+
+@enduml
