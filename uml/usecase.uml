@@ -15,6 +15,12 @@ Rectangle Contacts {
     (Search Contacts)
 }
 
+(Add Contact) --* (Edit Contact Data)
 
+
+:User: --> (Add Contact)
+:User: --> (View Contact)
+:User: --> (Edit Contact Data)
+:User: --> (Search Contacts)
 
 @enduml
