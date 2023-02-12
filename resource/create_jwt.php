@@ -1,20 +1,19 @@
 <?php
 declare(strict_types=1);
 
-namespace MyApp;
+// namespace MyApp;
 
 require 'vendor/autoload.php';
 
-use DateTimeImmutable;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\JwtFacade;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
 use Lcobucci\JWT\Signer\Key\InMemory;
 
-use function var_dump;
+// use function var_dump;
 
 $key = InMemory::base64Encoded(
-    'hiG8DlOKvtih6AxlZn5XKImZ06yu8I3mkOzaJrEuW8yAv8Jnkw330uMt8AEqQ5LB'
+    'U29tZXJzZXQtUHJvcG9zZS1FbXBsb3llZS1UcmFuc2Zvcm1hdGlvbi1BcHBlYWxzLUhlc2l0YXRlZC1FYXN0ZXItVmlydHVlLTE='
 );
 
 $token = (new JwtFacade())->issue(
@@ -24,10 +23,11 @@ $token = (new JwtFacade())->issue(
         Builder $builder,
         DateTimeImmutable $issuedAt
     ): Builder => $builder
-        ->issuedBy('https://api.my-awesome-app.io')
-        ->permittedFor('https://client-app.io')
-        ->expiresAt($issuedAt->modify('+10 minutes'))
+        ->issuedBy('http://localhost/ContactManager/resource/login.php')
+        ->permittedFor('http://localhost/ContactManager/resource')
+        ->expiresAt($issuedAt->modify('+12 hours'))
+        ->withClaim('userID', 12)
 );
 
-var_dump($token->claims()->all());
+// var_dump($token->claims()->all());
 echo $token->toString();

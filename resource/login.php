@@ -1,4 +1,14 @@
 <?php
+    require 'vendor/autoload.php';
+
+    use Lcobucci\JWT\Builder;
+    use Lcobucci\JWT\JwtFacade;
+    use Lcobucci\JWT\Signer\Hmac\Sha256;
+    use Lcobucci\JWT\Signer\Key\InMemory;
+
+    $key = InMemory::base64Encoded(
+        'U29tZXJzZXQtUHJvcG9zZS1FbXBsb3llZS1UcmFuc2Zvcm1hdGlvbi1BcHBlYWxzLUhlc2l0YXRlZC1FYXN0ZXItVmlydHVlLTE='
+    );
 
     // Establish connection with database
     require('database.php');
@@ -8,11 +18,6 @@
     $json = file_get_contents('php://input');
     $data = json_decode($json);
 
-    echo $data->username;
-    echo nl2br("\n");
-    echo $data->password;
-    echo nl2br("\n");
-
     $username = mysqli_real_escape_string($dbconn, stripslashes($data->username));
     $password = mysqli_real_escape_string($dbconn, stripslashes($data->password));
 
@@ -20,35 +25,45 @@
     if(loginAlreadyExists($dbconn, $username))
     {
         // Get password for this user from database
-        $stmt = $dbconn->prepare("SELECT Password FROM Users WHERE username=?");
+        $stmt = $dbconn->prepare("SELECT Password, userID FROM Users WHERE username=?");
         $stmt->bind_param("s", $username);
-        $stmt->bind_result($out_password);
+        $stmt->bind_result($out_password, $out_userID);
         $stmt->execute();
         $stmt->fetch();     // Get first result from statement's execution
         $stmt->close();
 
-        echo "Stored password for user ".$username.": ".$out_password;
-        echo nl2br("\n");
-
-        $hash = password_hash($password, PASSWORD_BCRYPT);
-        echo $hash;
-        echo nl2br("\n");
+        // echo nl2br("Stored password for user ".$username." (ID: ".$out_userID."): ".$out_password."\n");
 
         // Compare passwords
         if(password_verify($password, $out_password))
         {
-            echo "Passwords match";
+            // echo nl2br("Passwords match. Generating JWT\n");
+            // If passwords match, create and return a JWT that grants permission to use any API and expires in 24 hours
+            $token = (new JwtFacade())->issue(
+                new Sha256(),
+                $key,
+                static fn (
+                    Builder $builder,
+                    DateTimeImmutable $issuedAt
+                ): Builder => $builder
+                    ->issuedBy('http://localhost/ContactManager/resource/login.php')
+                    ->permittedFor('http://localhost/ContactManager/resource')
+                    ->expiresAt($issuedAt->modify('+12 hours'))
+                    ->withClaim('userID', $out_userID)
+            );
+
+            // echo $token->toString();
+            $response = $token->toString();
         }
         else
         {
-            echo "GTFO";
+            $response = "Invalid credentials";
         }
-        // If passwords match, create and return a JWT that grants permission to use any API and expires in 24 hours
-        
-        // If false, return an error message
     }
     else
     {
-        echo "Invalid credentials";
+        $response = "Invalid credentials";
     }
+
+    provideResponseViaJSON($response);
 ?>
