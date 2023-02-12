@@ -7,15 +7,17 @@
     //$DateCreated = date("Y-m-d H:i:s"); (may be completed implicity on db side)
     $Username = stripslashes($_REQUEST['username']);
     $Username = mysqli_real_escape_string($dbconn, $Username);
-    $Password  = stripslashes($_REQUEST['Password']);
-    $Password  = mysqli_real_escape_string($dbconn, $Password);
+    $Password = stripslashes($_REQUEST['Password']);
+    $Password = mysqli_real_escape_string($dbconn, $Password);
+
+    $Password = password_hash($Password, PASSWORD_BCRYPT);
 
     $response = "Username is already taken.";
     if (!loginAlreadyExists($dbconn, $Username)) {
         // Add to DB
         $stmt = $dbconn->prepare("INSERT into Users (username, Password)
                                 VALUES (?,?)");
-        $stmt->bind_param("ss", $Username, md5($Password));
+        $stmt->bind_param("ss", $Username, $Password);
         $stmt->execute();
         //$respone = $stmt->store_result();
         $response = "Successful account creation.";
