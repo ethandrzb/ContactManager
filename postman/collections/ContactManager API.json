@@ -33,6 +33,112 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Register user",
+					"id": "3e227e1f-b5a2-47c8-8b8e-7590022c616b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/ContactManager/resource/register.php?username=test&Password=1234",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ContactManager",
+								"resource",
+								"register.php"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "test"
+								},
+								{
+									"key": "Password",
+									"value": "1234"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login user (valid creds)",
+					"id": "1169ae25-74d0-404c-97fe-4bdfc0f6993f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"test\",\r\n    \"password\" : \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/ContactManager/resource/login.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ContactManager",
+								"resource",
+								"login.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login user (invalid creds)",
+					"id": "f8077957-6179-4522-bc11-a9072d3e5359",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"testsgad\",\r\n    \"password\" : \"123424gy4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/ContactManager/resource/login.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"ContactManager",
+								"resource",
+								"login.php"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "9c59076a-54f0-4f7e-8bd3-5e5c0bafea7f"
 		}
 	],
 	"variable": [
