@@ -45,8 +45,6 @@ paths:
                                         description: JSON web token used for future requests
                 401:
                     $ref: '#/components/responses/UnauthorizedError'
-                404:
-                    description: URL Not Found
     /login/registerUser.php:
         post:
             tags:
@@ -55,10 +53,6 @@ paths:
             operationId: registerUser
             description: Adds a user to the manager's database
             security: []    # No security required
-            # consumes:
-            #     - application/json
-            # produces:
-            #     - application/json
             requestBody:
                 required: true
                 content:
@@ -68,8 +62,8 @@ paths:
             responses:
                 200:
                     description: OK
-                404:
-                    description: URL Not Found
+                409:
+                    description: User with this name already exists
     /contacts/createContact.php:
         post:
             tags:
