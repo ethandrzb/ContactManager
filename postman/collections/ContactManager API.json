@@ -49,8 +49,17 @@
 							"request": {
 								"method": "POST",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"test2\",\r\n    \"password\" : \"321\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "http://localhost/ContactManager/resource/register.php?username=test&Password=1234",
+									"raw": "http://localhost/ContactManager/resource/register.php",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -59,16 +68,6 @@
 										"ContactManager",
 										"resource",
 										"register.php"
-									],
-									"query": [
-										{
-											"key": "username",
-											"value": "test"
-										},
-										{
-											"key": "Password",
-											"value": "1234"
-										}
 									]
 								}
 							},
@@ -148,15 +147,24 @@
 					"item": [
 						{
 							"name": "Register user",
-							"id": "93f894f7-852b-45ae-a442-05207fb47b00",
+							"id": "410b47ca-7ae9-49bd-9fd9-66e568414294",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
 								"method": "POST",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"test2\",\r\n    \"password\" : \"321\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "http://cop4331-2023.xyz/resource/register.php?username=test&Password=1234",
+									"raw": "http://cop4331-2023.xyz/resource/register.php",
 									"protocol": "http",
 									"host": [
 										"cop4331-2023",
@@ -165,16 +173,6 @@
 									"path": [
 										"resource",
 										"register.php"
-									],
-									"query": [
-										{
-											"key": "username",
-											"value": "test"
-										},
-										{
-											"key": "Password",
-											"value": "1234"
-										}
 									]
 								}
 							},
