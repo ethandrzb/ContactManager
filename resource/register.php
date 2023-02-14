@@ -27,6 +27,10 @@
         $response = "Successful account creation.";
         $stmt->close();
     }
+    else
+    {
+        http_response_code(409);
+    }
 
     // $response could include auth too ($response = $stmt->get_results())
     provideResponseViaJSON($response);
@@ -42,7 +46,9 @@
 
         $doesExist = false;
         if ($potentialUser != null)
+        {
             $doesExist = true;
+        }
 
         return $doesExist;
     }
