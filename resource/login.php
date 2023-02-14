@@ -54,11 +54,15 @@
         else
         {
             $response = "Invalid credentials";
+            http_response_code(401);
+            exit;
         }
     }
     else
     {
         $response = "Invalid credentials";
+        http_response_code(401);
+        exit;
     }
 
     // provideResponseViaJSON($response);
