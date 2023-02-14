@@ -5,9 +5,13 @@
     require('database.php');
 
     //$DateCreated = date("Y-m-d H:i:s"); (may be completed implicity on db side)
-    $Username = stripslashes($_REQUEST['username']);
+
+    $json = file_get_contents('php://input');
+    $data = json_decode($json);
+
+    $Username = stripslashes($data->username);
     $Username = mysqli_real_escape_string($dbconn, $Username);
-    $Password = stripslashes($_REQUEST['Password']);
+    $Password = stripslashes($data->password);
     $Password = mysqli_real_escape_string($dbconn, $Password);
 
     $Password = password_hash($Password, PASSWORD_BCRYPT);
