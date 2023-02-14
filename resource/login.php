@@ -61,5 +61,6 @@
         $response = "Invalid credentials";
     }
 
-    provideResponseViaJSON($response);
+    // provideResponseViaJSON($response);
+    setcookie("JWT", $response);
 ?>
