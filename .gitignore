@@ -1,0 +1,4 @@
+resource/secret.php
+resource/dbconfig.php
+resource/vendor/
+resource/composer.*
