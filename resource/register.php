@@ -3,6 +3,7 @@
     // Small Group Project 9 - Contact Manager
 
     require('database.php');
+    require('utils.php');
 
     //$DateCreated = date("Y-m-d H:i:s"); (may be completed implicity on db side)
 
@@ -35,27 +36,4 @@
     // $response could include auth too ($response = $stmt->get_results())
     provideResponseViaJSON($response);
     $dbconn->close();
-
-    function loginAlreadyExists($dbconn, $Username)
-    {
-        $stmt = $dbconn->prepare("SELECT username FROM Users WHERE username=?");
-        $stmt->bind_param("s", $Username);
-        $stmt->execute();
-        $potentialUser = $stmt->fetch();
-        $stmt->close();
-
-        $doesExist = false;
-        if ($potentialUser != null)
-        {
-            $doesExist = true;
-        }
-
-        return $doesExist;
-    }
-
-    function provideResponseViaJSON($response)
-    {
-        header('Content-type: application/json');
-        echo $response;
-    }
 ?>
