@@ -43,8 +43,8 @@ paths:
                                         type: string
                                         format: jwt
                                         description: JSON web token used for future requests
-                401:
-                    $ref: '#/components/responses/UnauthorizedError'
+                400:
+                    description: Bad request
     /login/registerUser.php:
         post:
             tags:
@@ -62,6 +62,8 @@ paths:
             responses:
                 200:
                     description: OK
+                400:
+                    description: Bad request
                 409:
                     description: User with this name already exists
     /contacts/createContact.php:
@@ -71,10 +73,6 @@ paths:
             summary: Adds a contact
             operationId: createContact
             description: Adds a contact to the manager's database
-            # consumes:
-            #     - application/json
-            # produces:
-            #     - application/json
             parameters:
                 - name: contactObject
                   in: query
@@ -84,6 +82,8 @@ paths:
             responses:
                 200:
                     description: OK
+                400:
+                    description: Bad request
                 401:
                     $ref: '#/components/responses/UnauthorizedError'
                 404:
@@ -96,10 +96,6 @@ paths:
             summary: Edits a contact
             operationId: editContact
             description: Edits a specific contact
-            # consumes:
-            #     - application/json
-            # produces:
-            #     - application/json
             parameters:
                 - name: contactObject
                   in: query
@@ -109,10 +105,10 @@ paths:
             responses:
                 200:
                     description: OK
+                400:
+                    description: Bad request
                 401:
                     $ref: '#/components/responses/UnauthorizedError'
-                404:
-                    description: URL Not Found
     # rework removeContact
     /contacts/removeContact.php:
         delete:
@@ -121,10 +117,6 @@ paths:
             summary: Removes a contact
             operationId: removeContact
             description: Removes a specific contact
-            # consumes:
-            #     - application/json
-            # produces:
-            #     - application/json
             parameters:
                 - name: contactObject
                   in: query
@@ -134,10 +126,10 @@ paths:
             responses:
                 200:
                     description: OK
+                400:
+                    description: Bad request
                 401:
                     $ref: '#/components/responses/UnauthorizedError'
-                404:
-                    description: URL Not Found
     /contacts/searchContact.php:
         get:
             tags:
@@ -145,10 +137,6 @@ paths:
             summary: Searches contacts
             operationId: searchContact
             description: Searches for contact within the manager's database
-            # consumes:
-            #     - application/json
-            # produces:
-            #     - application/json
             parameters:
                 - name: searchObject
                   in: query 
@@ -158,10 +146,11 @@ paths:
             responses:
                 200:
                     description: OK
+                400:
+                    description: Bad request
                 401:
                     $ref: '#/components/responses/UnauthorizedError'
-                404:
-                    description: URL Not Found
+
 components:
     securitySchemes:
         bearerAuth:
