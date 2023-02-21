@@ -4,44 +4,43 @@
 
     require('database.php');
     require('utils.php');
-
-    //$DateCreated = date("Y-m-d H:i:s"); (may be completed implicity on db side)
+    require('constants.php');
 
     if($_SERVER['REQUEST_METHOD'] === 'POST')
     {
-        $json = file_get_contents('php://input');
+        $json = file_get_contents(INPUT_PHP);
         $data = json_decode($json);
 
-        $Username = stripslashes($data->username);
-        $Username = mysqli_real_escape_string($dbconn, $Username);
-        $Password = stripslashes($data->password);
-        $Password = mysqli_real_escape_string($dbconn, $Password);
-
+        $Username = mysqli_real_escape_string($dbconn, stripslashes($data->username));
+        $Password = mysqli_real_escape_string($dbconn, stripslashes($data->password));
         $Password = password_hash($Password, PASSWORD_BCRYPT);
 
-        $response = "Username is already taken.";
-        if (!loginAlreadyExists($dbconn, $Username)) {
+        $response = USER_CREATION_200;
+        if (!loginAlreadyExists($dbconn, $Username))
+        {
             // Add to DB
             $stmt = $dbconn->prepare("INSERT into Users (username, Password)
                                     VALUES (?,?)");
             $stmt->bind_param("ss", $Username, $Password);
             $stmt->execute();
-            //$respone = $stmt->store_result();
-            $response = "Successful account creation.";
             $stmt->close();
+
+            $response = USER_CREATION_200;
+            http_response_code(200);
         }
         else
         {
+            $response = USER_CREATION_409;
             http_response_code(409);
         }
-
-        // $response could include auth too ($response = $stmt->get_results())
-        provideResponseViaJSON($response);
         $dbconn->close();
     }
     else
     {
+        $response = DEFAULT_RESPONSE_400;
         http_response_code(400);
-        exit;
     }
+
+    provideResponseViaJSON($response);
+    exit;
 ?>

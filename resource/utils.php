@@ -1,4 +1,7 @@
 <?php
+
+    require('constants.php');
+
     function loginAlreadyExists($dbconn, $Username)
     {
         $stmt = $dbconn->prepare("SELECT username FROM Users WHERE username=?");
@@ -7,16 +10,22 @@
         $potentialUser = $stmt->fetch();
         $stmt->close();
 
-        $doesExist = false;
-        if ($potentialUser != null)
-            $doesExist = true;
+        return $potentialUser != null;
+    }
 
-        return $doesExist;
+    function getUserId($dbconn, $Username)
+    {
+        $stmt = $dbconn->prepare("SELECT userID FROM Users WHERE username=?");
+        $stmt->bind_param("s", $Username);
+        $stmt->execute();
+        $currentUserId = $stmt->fetch();
+
+        return $currentUserId;
     }
 
     function provideResponseViaJSON($response)
     {
-        header('Content-type: application/json');
+        header(DEFAULT_JSON_HEADER);
         echo $response;
     }
 ?>
