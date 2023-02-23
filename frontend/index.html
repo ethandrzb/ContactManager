@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <link rel = "stylesheet" href = "styles.css">
+    <head>
+        <meta name = "viewport" content="width=device-width, initial-scale = 1.0">
+        <meta chatset = "utf-8">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+        <title> Contact Manager </title>
+    </head>
+    <body>
+        <center>
+        <h1 style = "font-size: 60px; padding-top: 150px;"> Contact Manager</h1>
+        </center>
+        <div class ="signin">
+            <form class="form" id="login"
+                <label for="username"> Sign In </label><br><br><br>
+                <input type = "text" placeholder = "username" id = "loginUsername"> <br>
+                <input type = "password" placeholder = "password" id = "loginPassword" ><br><br><br>
+                <input type = "submit" value = "SIGN IN" id = "login-submit">
+                <label hidden id = "login-error"> ERROR: incorrect username and password </label>
+                <label hidden id = "login-success"> SUCCESS! </label>
+                
+            </form>
+            <form class="form" id="signup">
+                <label for="username"> Register </label><br><br>
+                <input type = "text" placeholder = "username" id = "registerUsername"> <br>
+                <input type = "password" placeholder = "password" id = "registerPassword"><br>
+                <input type = "password" placeholder = "confirm password" id = confirmPassword>
+                <input type = "submit" value = "REGISTER" id = "register-submit">
+                <label for = "error" hidden id = "register-error"> ERROR: passwords do not match </label>
+                <label for = "error" hidden id = "failed-error"> ERROR: Please try again. </label>
+                <label hidden id = "register-success"> SUCCESS! Account created! </label>
+                <!--put a succesds message after button pressed-->
+            </form>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
+<!--color for website #ADD8E6-->
