@@ -4,6 +4,8 @@ const loginButton = document.getElementById("login-submit");
 const registerButton = document.getElementById("register-submit");
 
 loginForm.addEventListener("submit", (event) => {
+    document.getElementById("login-error").hidden = true;
+    document.getElementById("login-success").hidden = true;
     const loginUsername = loginForm.loginUsername.value;
     const loginPassword = loginForm.loginPassword.value;
 
@@ -43,6 +45,9 @@ loginForm.addEventListener("submit", (event) => {
 
 
 registerForm.addEventListener("submit", (event) => {
+    document.getElementById("register-error").hidden = true;
+    document.getElementById("register-success").hidden = true;
+    document.getElementById("failed-error").hidden = true;
     const registerUsername = registerForm.registerUsername.value;
     const registerPassword = registerForm.registerPassword.value;
     const confirmPassword = registerForm.confirmPassword.value;
