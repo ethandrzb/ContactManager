@@ -17,7 +17,7 @@ info:
 paths:
     # The two login apis likely need some sort of authentication
     # embedded in definitions below
-    /login/login.php:
+    /login.php:
         post:
             tags:
                 - Users
@@ -45,7 +45,7 @@ paths:
                                         description: JSON web token used for future requests
                 400:
                     description: Bad request
-    /login/registerUser.php:
+    /registerUser.php:
         post:
             tags:
                 - Users
@@ -66,7 +66,7 @@ paths:
                     description: Bad request
                 409:
                     description: User with this name already exists
-    /contacts/createContact.php:
+    /createContact.php:
         post:
             tags:
                 - Contact
@@ -89,7 +89,7 @@ paths:
                 404:
                     description: URL Not Found
     # rework editContact
-    /contacts/editContact.php:
+    /editContact.php:
         put:
             tags:
                 - Edit
@@ -110,13 +110,13 @@ paths:
                 401:
                     $ref: '#/components/responses/UnauthorizedError'
     # rework removeContact
-    /contacts/removeContact.php:
+    /deleteContact.php:
         delete:
             tags:
-                - Remove
-            summary: Removes a contact
-            operationId: removeContact
-            description: Removes a specific contact
+                - Delete
+            summary: Deletes a contact
+            operationId: deleteContact
+            description: Deletes a specific contact
             parameters:
                 - name: contactObject
                   in: query
