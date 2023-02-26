@@ -20,7 +20,7 @@
 								"disableBodyPruning": true
 							},
 							"request": {
-								"method": "DELETE",
+								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
