@@ -107,7 +107,7 @@ paths:
                 401:
                     $ref: '#/components/responses/UnauthorizedError'
     /deleteContact.php:
-        delete:
+        post:
             tags:
                 - Delete
             summary: Deletes a contact
