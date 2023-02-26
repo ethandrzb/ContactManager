@@ -9,7 +9,80 @@
 	"item": [
 		{
 			"name": "contacts",
-			"item": [],
+			"item": [
+				{
+					"name": "localhost",
+					"item": [
+						{
+							"name": "Delete Contact",
+							"id": "287b03b8-b8bf-43a4-bd15-a2175e07077e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"contactID\" : 40\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/ContactManager/resource/deleteContact.php",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"ContactManager",
+										"resource",
+										"deleteContact.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Contact",
+							"id": "4782742b-f5db-4c35-8fcc-3a53bb592fe4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\" : \"Cool\",\r\n    \"lastName\" : \"Crab\",\r\n    \"email\" : \"email@mail.com\",\r\n    \"phone\" : \"987-654-3210\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/ContactManager/resource/addContact.php",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"ContactManager",
+										"resource",
+										"addContact.php"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "cd5c82cc-528f-4da0-9019-32fbae38d268"
+				}
+			],
 			"id": "790c8fe6-93ff-4aed-84f7-419be950c7ba",
 			"event": [
 				{
