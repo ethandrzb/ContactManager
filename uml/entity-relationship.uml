@@ -1,0 +1,18 @@
+@startuml
+
+object Contact {
+    Name
+    Phone Number
+    Email Address
+}
+
+object User {
+    User ID
+    Username
+    Password
+}
+
+User --> Contact : Searches
+User --o Contact
+
+@enduml
