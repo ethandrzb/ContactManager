@@ -14,15 +14,6 @@
         return $potentialUser != null;
     }
 
-    // function getUserId($dbconn, $Username)
-    // {
-    //     $stmt = $dbconn->prepare("SELECT userID FROM Users WHERE username=?");
-    //     $stmt->bind_param("s", $Username);
-    //     $stmt->execute();
-    //     $currentUserId = $stmt->fetch();
-
-    //     return $currentUserId;
-    // }
     function getUserID()
     {
         $cookie_name = "JWT";
