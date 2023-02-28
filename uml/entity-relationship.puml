@@ -1,6 +1,7 @@
 @startuml
 
 object Contact {
+    Contact ID
     Name
     Phone Number
     Email Address
@@ -12,7 +13,12 @@ object User {
     Password
 }
 
+object Token {
+    User ID
+}
+
 User --> Contact : Searches
-User --o Contact
+User o-- Contact
+User o-- Token
 
 @enduml
