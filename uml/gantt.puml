@@ -7,29 +7,21 @@ Project starts on 2023-01-17
 [Database Setup] lasts 8 days and is colored in Pink
 
 [Requirements Document] lasts 1 day and is colored in Lavender and starts on 2023-01-26
-[Frontend Design] lasts 7 days and is colored in LightGreen and starts after [Requirements Document]'s end
+
 [API Design] lasts 7 days and is colored in Orange and starts after [Requirements Document]'s end
 [API Postman Rework] lasts 10 days and is colored in Orange and starts on 2023-01-30
-
-
-[Frontend Check] happens on 2023-02-14
 [API Check] happens on 2023-02-21
+[API Login Implementation] lasts 13 days and is colored in Orange and starts after [API Postman Rework]'s end
+[API CRUD Operations] lasts 9 days and is colored in Orange and starts after [API Login Implementation]'s end
+[API Search] lasts 7 days and is colored in Orange and starts after [API Login Implementation]'s end
+[Frontend Design] lasts 7 days and is colored in LightGreen and starts after [Requirements Document]'s end
+[Frontend Check] happens on 2023-02-14
+[Login Page] lasts 14 days and is colored in LightGreen and starts after [Frontend Design]'s end
+[Contact View Page] lasts 14 days and is colored in LightGreen and starts after [Login Page]'s end
+[Add/Edit Page] lasts 14 days and is colored in LightGreen and starts after [Login Page]'s end
+
 [Project Manager Check] happens on 2023-02-28
-
-
-
-
-
-
-
-'
-'[API Login Implementation]
-'[Frontend Login Implementation]
-'[API CRUD Operations]
-'[API Search]
-'[Contact View Page]
-'[Contact Add/Edit Page]
-'[Presentation Preparation]
+[Presentation Preparation] lasts 19 days and is colored in Lavender and starts on 2023-02-29
 
 [Presentation Date] happens on 2023-03-20
 @endgantt
