@@ -18,6 +18,7 @@ object Token {
 }
 
 User --> Contact : Searches
+Token --> User : Identifies
 User o-- Contact
 User o-- Token
 
