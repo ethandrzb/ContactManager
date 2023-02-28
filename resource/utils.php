@@ -34,6 +34,7 @@
     function provideResponseViaJSON($response)
     {
         header(DEFAULT_JSON_HEADER);
-        echo $response;
+        if (!is_array($response)) {echo $response;}
+        echo json_encode($response);
     }
 ?>
