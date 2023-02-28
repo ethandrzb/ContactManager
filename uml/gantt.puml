@@ -1,10 +1,35 @@
 @startgantt
 'https://plantuml.com/gantt-diagram
 
-[Prototype design] lasts 13 days and is colored in Lavender/LightBlue
-[Test prototype] lasts 9 days and is colored in Coral/Green and starts 3 days after [Prototype design]'s end
-[Write tests] lasts 5 days and ends at [Prototype design]'s end
-[Hire tests writers] lasts 6 days and ends at [Write tests]'s start
-[Init and write tests report] is colored in Coral/Green
-[Init and write tests report] starts 1 day before [Test prototype]'s start and ends at [Test prototype]'s end
+Project starts on 2023-01-17
+
+[Database Check] happens on 2023-01-24
+[Database Setup] lasts 8 days and is colored in Pink
+
+[Requirements Document] lasts 1 day and is colored in Lavender and starts on 2023-01-26
+[Frontend Design] lasts 7 days and is colored in LightGreen and starts after [Requirements Document]'s end
+[API Design] lasts 7 days and is colored in Orange and starts after [Requirements Document]'s end
+[API Postman Rework] lasts 10 days and is colored in Orange and starts on 2023-01-30
+
+
+[Frontend Check] happens on 2023-02-14
+[API Check] happens on 2023-02-21
+[Project Manager Check] happens on 2023-02-28
+
+
+
+
+
+
+
+'
+'[API Login Implementation]
+'[Frontend Login Implementation]
+'[API CRUD Operations]
+'[API Search]
+'[Contact View Page]
+'[Contact Add/Edit Page]
+'[Presentation Preparation]
+
+[Presentation Date] happens on 2023-03-20
 @endgantt
