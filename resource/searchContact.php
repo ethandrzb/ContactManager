@@ -18,7 +18,7 @@
         $partialFirstName = "%$partialFirstName%";
 
         // may want to union with a 'partialLastName' as well (selecting from same table)
-        $stmt = $dbconn->prepare("SELECT firstName, lastName, phone, email FROM Contacts WHERE firstName LIKE ?");
+        $stmt = $dbconn->prepare("SELECT firstName, lastName, phone, email, ContactID FROM Contacts WHERE firstName LIKE ?");
         $stmt->bind_param("s", $partialFirstName);
         $stmt->execute();
 
