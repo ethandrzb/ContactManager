@@ -90,7 +90,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"searchQuery\" : \"co\"\r\n}",
+									"raw": "{\r\n    \"searchQuery\" : \"co\",\r\n    \"page\": \"1\",\r\n    \"resultsPerPage\": \"25\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
