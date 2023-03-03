@@ -16,17 +16,23 @@
         // Sanitize inputs
         $searchQuery = (!is_null($data->searchQuery)) ? mysqli_real_escape_string($dbconn, stripslashes($data->searchQuery)) : "";
         $searchQuery = "%$searchQuery%";
+        $page = (!is_null($data->page)) ? mysqli_real_escape_string($dbconn, stripslashes($data->page)) : "";
+        $page = intval($page);
+        $resultsPerPage = (!is_null($data->resultsPerPage)) ? mysqli_real_escape_string($dbconn, stripslashes($data->resultsPerPage)) : "";
+        $resultsPerPage = intval($resultsPerPage);
+
+        $offset = $resultsPerPage * ($page - 1);
 
         // Return all contacts belonging to a user if no search query is given
         if(empty($searchQuery))
         {
-            $stmt = $dbconn->prepare("SELECT firstName, lastName, phone, email, ContactID FROM Contacts WHERE userID=?");
-            $stmt->bind_param("s", $currentUserID);
+            $stmt = $dbconn->prepare("SELECT firstName, lastName, phone, email, ContactID FROM Contacts WHERE userID=? OFFSET ? ROWS FETCH NEXT ? ROWS ONLY");
+            $stmt->bind_param("sii", $currentUserID, $offset, $resultsPerPage);
         }
         else
         {
-            $stmt = $dbconn->prepare("SELECT firstName, lastName, phone, email, ContactID FROM Contacts WHERE (userID=?) AND ((firstName LIKE ?) OR (lastName LIKE ?))");
-            $stmt->bind_param("sss", $currentUserID, $searchQuery, $searchQuery);
+            $stmt = $dbconn->prepare("SELECT firstName, lastName, phone, email, ContactID FROM Contacts WHERE (userID=?) AND ((firstName LIKE ?) OR (lastName LIKE ?)) OFFSET ? ROWS FETCH NEXT ? ROWS ONLY");
+            $stmt->bind_param("sssii", $currentUserID, $searchQuery, $searchQuery, $offset, $resultsPerPage);
         }
 
         $stmt->execute();
