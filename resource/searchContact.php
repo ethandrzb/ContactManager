@@ -14,12 +14,12 @@
         $currentUserID = getUserID();
 
         // Sanitize inputs
-        $partialFirstName = (!is_null($data->firstName)) ? mysqli_real_escape_string($dbconn, stripslashes($data->firstName)) : "";
-        $partialFirstName = "%$partialFirstName%";
+        $searchQuery = (!is_null($data->searchQuery)) ? mysqli_real_escape_string($dbconn, stripslashes($data->searchQuery)) : "";
+        $searchQuery = "%$searchQuery%";
 
         // may want to union with a 'partialLastName' as well (selecting from same table)
-        $stmt = $dbconn->prepare("SELECT firstName, lastName, phone, email, ContactID FROM Contacts WHERE firstName LIKE ?");
-        $stmt->bind_param("s", $partialFirstName);
+        $stmt = $dbconn->prepare("SELECT firstName, lastName, phone, email, ContactID FROM Contacts WHERE (userID=?) AND ((firstName LIKE ?) OR (lastName LIKE ?))");
+        $stmt->bind_param("sss", $currentUserID, $searchQuery, $searchQuery);
         $stmt->execute();
 
         $potentialContacts = $stmt->get_result()->fetch_all();
