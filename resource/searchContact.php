@@ -17,9 +17,18 @@
         $searchQuery = (!is_null($data->searchQuery)) ? mysqli_real_escape_string($dbconn, stripslashes($data->searchQuery)) : "";
         $searchQuery = "%$searchQuery%";
 
-        // may want to union with a 'partialLastName' as well (selecting from same table)
-        $stmt = $dbconn->prepare("SELECT firstName, lastName, phone, email, ContactID FROM Contacts WHERE (userID=?) AND ((firstName LIKE ?) OR (lastName LIKE ?))");
-        $stmt->bind_param("sss", $currentUserID, $searchQuery, $searchQuery);
+        // Return all contacts belonging to a user if no search query is given
+        if(empty($searchQuery))
+        {
+            $stmt = $dbconn->prepare("SELECT firstName, lastName, phone, email, ContactID FROM Contacts WHERE userID=?");
+            $stmt->bind_param("s", $currentUserID);
+        }
+        else
+        {
+            $stmt = $dbconn->prepare("SELECT firstName, lastName, phone, email, ContactID FROM Contacts WHERE (userID=?) AND ((firstName LIKE ?) OR (lastName LIKE ?))");
+            $stmt->bind_param("sss", $currentUserID, $searchQuery, $searchQuery);
+        }
+
         $stmt->execute();
 
         $potentialContacts = $stmt->get_result()->fetch_all();
