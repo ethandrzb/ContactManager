@@ -57,7 +57,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"firstName\" : \"Cool\",\r\n    \"lastName\" : \"Crab\",\r\n    \"email\" : \"email@mail.com\",\r\n    \"phone\" : \"987-654-3210\"\r\n}",
+									"raw": "{\r\n    \"firstName\" : \"Bob\",\r\n    \"lastName\" : \"Jones\",\r\n    \"email\" : \"jonesb@gmail.com\",\r\n    \"phone\" : \"135-790-2468\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -74,6 +74,39 @@
 										"ContactManager",
 										"resource",
 										"addContact.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search Contact (normal query)",
+							"id": "95e05670-d00c-4c93-a896-c44e5fb48bee",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"searchQuery\" : \"co\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/ContactManager/resource/searchContact.php",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"ContactManager",
+										"resource",
+										"searchContact.php"
 									]
 								}
 							},
