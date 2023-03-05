@@ -1,4 +1,8 @@
 <?php
+    require 'vendor/autoload.php';
+    require('constants.php');
+    require('parse_jwt.php');
+
     function loginAlreadyExists($dbconn, $Username)
     {
         $stmt = $dbconn->prepare("SELECT username FROM Users WHERE username=?");
@@ -7,16 +11,36 @@
         $potentialUser = $stmt->fetch();
         $stmt->close();
 
-        $doesExist = false;
-        if ($potentialUser != null)
-            $doesExist = true;
+        return $potentialUser != null;
+    }
 
-        return $doesExist;
+    function getUserID()
+    {
+        $cookie_name = "JWT";
+
+        // Only procede if JWT cookie is present
+        if((isset($_COOKIE[$cookie_name])))
+        {
+            return parseJWT($_COOKIE[$cookie_name], "userID");
+        }
+        else
+        {
+            echo "Cookie not found" . PHP_EOL;
+            http_response_code(401);
+            exit;
+        }
     }
 
     function provideResponseViaJSON($response)
     {
-        header('Content-type: application/json');
-        echo $response;
+        header(DEFAULT_JSON_HEADER);
+        if (!is_array($response)) 
+        {
+            echo $response;
+        }
+        else
+        {
+            echo json_encode($response);
+        }
     }
 ?>

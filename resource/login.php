@@ -9,11 +9,12 @@
     require('database.php');
     require('utils.php');
     require('secret.php');
+    require('constants.php');
 
     if($_SERVER['REQUEST_METHOD'] === 'POST')
     {
         // Parse User object
-        $json = file_get_contents('php://input');
+        $json = file_get_contents(INPUT_PHP);
         $data = json_decode($json);
 
         $username = mysqli_real_escape_string($dbconn, stripslashes($data->username));
@@ -55,14 +56,14 @@
             }
             else
             {
-                $response = "Invalid credentials";
+                $response = DEFAULT_AUTHENTICATE_401;
                 http_response_code(401);
                 exit;
             }
         }
         else
         {
-            $response = "Invalid credentials";
+            $response = DEFAULT_AUTHENTICATE_401;
             http_response_code(401);
             exit;
         }
