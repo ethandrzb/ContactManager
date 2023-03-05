@@ -16,9 +16,9 @@
         // Sanitize inputs
         $searchQuery = (!is_null($data->searchQuery)) ? mysqli_real_escape_string($dbconn, stripslashes($data->searchQuery)) : "";
         $searchQuery = "%$searchQuery%";
-        $page = (!is_null($data->page)) ? mysqli_real_escape_string($dbconn, stripslashes($data->page)) : "";
+        $page = (!is_null($data->page)) ? mysqli_real_escape_string($dbconn, stripslashes($data->page)) : "1";
         $page = intval($page);
-        $resultsPerPage = (!is_null($data->resultsPerPage)) ? mysqli_real_escape_string($dbconn, stripslashes($data->resultsPerPage)) : "";
+        $resultsPerPage = (!is_null($data->resultsPerPage)) ? mysqli_real_escape_string($dbconn, stripslashes($data->resultsPerPage)) : "25";
         $resultsPerPage = intval($resultsPerPage);
 
         $offset = $resultsPerPage * ($page - 1);
