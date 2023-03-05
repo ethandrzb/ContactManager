@@ -11,17 +11,17 @@
         $json = file_get_contents(INPUT_PHP);
         $data = json_decode($json);
 
-        //TODO: Compare logged in user ID with user ID of contact they want to delete
         $currentUserID = getUserID();
 
         // Sanitize inputs
         $contactID = (!is_null($data->contactID)) ? mysqli_real_escape_string($dbconn, stripslashes($data->contactID)) : "";
 
-        $stmt = $dbconn->prepare("DELETE FROM Contacts WHERE ContactID=(?)");
-        $stmt->bind_param("s", $contactID);
+        $stmt = $dbconn->prepare("DELETE FROM Contacts WHERE ContactID=(?) and userID=(?)");
+        $stmt->bind_param("ss", $contactID, $currentUserID);
         $stmt->execute();
         $stmt->close();
 
+        // TODO: Change response based on whether anything was actually deleted
         $response = "Deletion successful";
         $dbconn->close();
     }
