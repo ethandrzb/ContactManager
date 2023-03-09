@@ -29,7 +29,7 @@ addForm.addEventListener("submit", (event) => {
 
     fetch("https://cop4331-2023.xyz/resource/addContact.php", requestOptions)
     .then(response => {
-        window.location.href = window.location.href + "/contacts.html"
+        window.location.href = "/contacts.html"
     })
     event.preventDefault();
 })
