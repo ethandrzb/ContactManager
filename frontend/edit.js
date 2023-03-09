@@ -8,7 +8,7 @@ const currentLast = document.querySelector('.last');
 const currentEmail = document.querySelector('.email');
 const currentPhone = document.querySelector('.phone');
 const currentDate = document.querySelector('.date');
-
+/*
 function printContact(){
     //var contact = new contact();
     //figure out how to fetch this data
@@ -23,7 +23,8 @@ function printContact(){
     currentPhone.innerHTML = phone;
     currentDate.innerHMTL = date;
 }
-printContact();
+//printContact();
+*/
 
 //this will actually update the contact
 editForm.addEventListener("submit", (event) => {
