@@ -26,7 +26,7 @@ function printContact(){
 printContact();
 
 //this will actually update the contact
-addForm.addEventListener("submit", (event) => {
+editForm.addEventListener("submit", (event) => {
     const firstname = editForm.firstname.value;
     const lastname = editForm.lastname.value;
     const email = editForm.email.value;
@@ -40,14 +40,14 @@ addForm.addEventListener("submit", (event) => {
         method: 'POST',
         body: raw,
         redirect: 'follow'
-      };
+    };
   
-      fetch("https://cop4331-2023.xyz/resource/editContact.php", requestOptions)
+    fetch("https://cop4331-2023.xyz/resource/editContact.php", requestOptions)
       .then(response => response.text())
       .then(response => {
             console.log(data);
-            window.location.href = window.location.href + "/details.html"
+            window.location.href = "/details.html"
       })
-      event.preventDefault();
+    event.preventDefault();
   })
 
