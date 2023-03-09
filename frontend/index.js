@@ -18,7 +18,7 @@ loginForm.addEventListener("submit", (event) => {
     redirect: 'follow'
     };
 
-    fetch("http://cop4331-2023.xyz/resource/login.php", requestOptions)
+    fetch("https://cop4331-2023.xyz/resource/login.php", requestOptions)
     .then(response => {
         if (response.ok) {
             //display a success message
@@ -70,7 +70,7 @@ registerForm.addEventListener("submit", (event) => {
     redirect: 'follow'
     };
 
-    fetch("http://cop4331-2023.xyz/resource/register.php", requestOptions)
+    fetch("https://cop4331-2023.xyz/resource/register.php", requestOptions)
     .then(response => {
         if (response.ok) {
             document.getElementById("register-success").hidden = false;
