@@ -19,7 +19,7 @@ addForm.addEventListener("submit", (event) => {
   const email = addForm.email.value;
   const phone = addForm.phone.value;
 
-  var raw = "{\r\n    \"firstName\" : \" " + firstname + "\",\r\n    \"lastName\" : \"\" "+ lastname + ",\r\n    \"email\" : \"\" "+ email + ",\r\n    \"phone\" : \"\" "+ phone +"\r\n}";
+  var raw = "{\r\n    \"firstName\" : \"" + firstname + "\",\r\n    \"lastName\" : \" "+ lastname + "\",\r\n    \"email\" : \""+ email + "\",\r\n    \"phone\" : \""+ phone +"\"\r\n}";
 
     var requestOptions = {
     method: 'POST',
@@ -28,6 +28,7 @@ addForm.addEventListener("submit", (event) => {
     };
 
     fetch("https://cop4331-2023.xyz/resource/addContact.php", requestOptions)
+    .then(response => response.text())
     .then(response => {
         window.location.href = "/contacts.html"
     })
