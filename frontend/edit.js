@@ -2,7 +2,7 @@ const editForm = document.getElementById("edit");
 const editButton = document.getElementById("edit-submit");
 
 //this will populate form placeholders
-var contact = new contact();
+//var contact = new contact();
 const currentFirst = document.querySelector('.first');
 const currentLast = document.querySelector('.last');
 const currentEmail = document.querySelector('.email');
@@ -10,7 +10,7 @@ const currentPhone = document.querySelector('.phone');
 const currentDate = document.querySelector('.date');
 
 function printContact(){
-    var contact = new contact();
+    //var contact = new contact();
     //figure out how to fetch this data
     //var first = ;
     //var last = ;
