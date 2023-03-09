@@ -46,7 +46,6 @@ editForm.addEventListener("submit", (event) => {
     fetch("https://cop4331-2023.xyz/resource/editContact.php", requestOptions)
       .then(response => response.text())
       .then(response => {
-            console.log(data);
             window.location.href = "/details.html"
       })
     event.preventDefault();
