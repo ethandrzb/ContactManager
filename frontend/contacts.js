@@ -20,16 +20,17 @@ function getResults() {
 
     fetch("https://cop4331-2023.xyz/resource/searchContact.php", requestOptions)
     .then(response => response.text())
-    .then(result => console.log(result))
+    .then(result => {
+        var parsedResult = JSON.parse(result);
+        for(var i = 1; i < parsedResult.length; i++)
+        {
+            cloneCard(parsedResult[i]);
+        }
+    })
     .catch(error => console.log('error', error));
 
+    
 }
-
-var users;
-// for(var i = 1; i < users.length; i++)
-// {
-//     cloneCard(users[i]);
-// }
 
 if (document.getElementById('add-contact')) {
     document.getElementById('add-contact').addEventListener('click', 
@@ -46,7 +47,7 @@ function cloneCard(user){
     var cardContents = document.getElementById('contact-details').innerHTML;
     var clone = document.createElement("input");
     clone.type = "preview";
-    clone.value = user.firstName + " " + user.lastName;
+    clone.value = user['firstName'] + " " + user['lastName'];
     clone.innerHTML = cardContents;
     clone.hidden = false;
     document.getElementById('contactcard').append(clone);

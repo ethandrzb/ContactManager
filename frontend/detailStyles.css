@@ -74,4 +74,15 @@ button{
     box-shadow: 0px 3px 3px #00000030;
 }
 
-
+button.delete {
+    padding:10px;
+    border-radius: 10px;
+    color:white;
+    background-color: #54a3ec;
+    margin: 7px;
+    width: 185px;
+    text-align: center;
+    border: 1px solid #01549F40;
+    box-shadow: 0px 3px 3px #00000050;  
+    font-size: 13px; 
+}
