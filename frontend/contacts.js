@@ -47,9 +47,12 @@ function cloneCard(user){
     var cardContents = document.getElementById('contact-details').innerHTML;
     var clone = document.createElement("input");
     clone.type = "preview";
-    clone.value = user['firstName'] + " " + user['lastName'];
+    clone.value = user[0] + " " + user[1];
     clone.innerHTML = cardContents;
     clone.hidden = false;
+    clone.onclick = function(){
+        window.location.href="/details.html?cid=" + user[4];
+    }
     document.getElementById('contactcard').append(clone);
 }
 
