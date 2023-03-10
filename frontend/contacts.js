@@ -7,11 +7,29 @@ function User(firstName, lastName, email, phone, date){
     this.date = date;
 } 
 
-var users = [new User('Ruth Pearl', 'ruth.j.pearl@gmail.com', '(352)-678-0366', '03/09/23'), new User('Child Pearl', 'child.pearl@gmail.com', '(234)-345-4567', '03/11/23')];
-for(var i = 1; i < users.length; i++)
-{
-    cloneCard(users[i]);
+function getResults() {
+    var searchQuery = document.getElementById('searchbar').value;
+
+    var raw = "{\r\n    \"searchQuery\" : \"" + searchQuery + "\",\r\n    \"page\": \"1\",\r\n    \"resultsPerPage\": \"25\"\r\n}";
+
+    var requestOptions = {
+    method: 'POST',
+    body: raw,
+    redirect: 'follow'
+    };
+
+    fetch("http://localhost/ContactManager/resource/searchContact.php", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+
 }
+
+var users;
+// for(var i = 1; i < users.length; i++)
+// {
+//     cloneCard(users[i]);
+// }
 
 if (document.getElementById('add-contact')) {
     document.getElementById('add-contact').addEventListener('click', 
