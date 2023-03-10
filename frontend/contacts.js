@@ -30,6 +30,7 @@ function cloneCard(user){
     clone.type = "preview";
     clone.value = user.name;
     clone.innerHTML = cardContents;
+    clone.hidden = false;
     document.getElementById('contactcard').append(clone);
 }
 
