@@ -32,6 +32,7 @@ function getResults() {
 
     
 }
+getResults();
 
 if (document.getElementById('add-contact')) {
     document.getElementById('add-contact').addEventListener('click', 
