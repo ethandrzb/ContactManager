@@ -22,7 +22,8 @@ function getResults() {
     .then(response => response.text())
     .then(result => {
         var parsedResult = JSON.parse(result);
-        for(var i = 1; i < parsedResult.length; i++)
+        clearCards();
+        for(var i = 0; i < parsedResult.length; i++)
         {
             cloneCard(parsedResult[i]);
         }
@@ -54,6 +55,11 @@ function cloneCard(user){
         window.location.href="/details.html?cid=" + user[4];
     }
     document.getElementById('contactcard').append(clone);
+}
+
+
+function clearCards() {
+    document.getElementById('contactcard').innerHTML = document.getElementById('contact-details').outerHTML;
 }
 
 function addContact(name, email, phone) {
