@@ -24,7 +24,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"contactID\" : 40\r\n}",
+									"raw": "{\r\n    \"contactID\" : 58\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -41,6 +41,72 @@
 										"ContactManager",
 										"resource",
 										"deleteContact.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Contact",
+							"id": "b675fda9-cae5-4478-8d51-897e00317036",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"contactID\" : 61\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/ContactManager/resource/getContact.php",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"ContactManager",
+										"resource",
+										"getContact.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Contact",
+							"id": "3d136158-06eb-4eb6-a22f-9350bb001523",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"contactID\" : 61,\r\n    \"firstName\" : \"Cool\",\r\n    \"lastName\" : \"Crab\",\r\n    \"email\" : \"crab.rave@gmail.com\",\r\n    \"phone\" : \"222-333-4444\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/ContactManager/resource/editContact.php",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"ContactManager",
+										"resource",
+										"editContact.php"
 									]
 								}
 							},
@@ -90,7 +156,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"searchQuery\" : \"co\",\r\n    \"page\": \"1\",\r\n    \"resultsPerPage\": \"25\"\r\n}",
+									"raw": "{\r\n    \"searchQuery\" : \"bo\",\r\n    \"page\": \"1\",\r\n    \"resultsPerPage\": \"25\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
