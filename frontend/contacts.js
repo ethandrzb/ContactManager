@@ -18,7 +18,7 @@ function getResults() {
     redirect: 'follow'
     };
 
-    fetch("http://localhost/ContactManager/resource/searchContact.php", requestOptions)
+    fetch("https://cop4331-2023.xyz/ContactManager/resource/searchContact.php", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
