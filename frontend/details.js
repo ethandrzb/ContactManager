@@ -16,7 +16,7 @@ function deleteUser() {
         redirect: 'follow'
     };
 
-    fetch("http://cop4331-2023.xyz/resource/deleteContact.php", requestOptions)
+    fetch("https://cop4331-2023.xyz/resource/deleteContact.php", requestOptions)
     .then(response => response.text())
     .then(result => window.location.href = "/contacts.html")
     .catch(error => console.log('error', error));    
