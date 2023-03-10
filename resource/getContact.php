@@ -1,5 +1,5 @@
 <?php
-    // Retrieves the specified contact from the database
+    // Retrieves the specified contact from the database if it matches the ID of the logged in user
     // Small Group Project 9 - Contact Manager
 
     require('database.php');
@@ -14,7 +14,7 @@
         $currentUserID = getUserID();
 
         // Sanitize inputs
-        $contactID = (!is_null($data->ContactID)) ? mysqli_real_escape_string($dbconn, stripslashes($data->ContactID)) : "";
+        $contactID = (!is_null($data->contactID)) ? mysqli_real_escape_string($dbconn, stripslashes($data->contactID)) : "";
 
         $stmt = $dbconn->prepare("SELECT firstName, lastName, phone, email, dateCreated FROM Contacts WHERE ContactID=? AND userID=?");
         $stmt->bind_param("ss", $contactID, $currentUserID);
