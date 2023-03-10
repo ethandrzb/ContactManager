@@ -10,7 +10,7 @@ function User(firstName, lastName, email, phone, date){
 function getResults() {
     var searchQuery = document.getElementById('searchbar').value;
 
-    var raw = "{\r\n    \"searchQuery\" : \"" + searchQuery + "\",\r\n    \"page\": 1,\r\n    \"resultsPerPage\": \"25\"\r\n}";
+    var raw = "{\r\n    \"searchQuery\" : \"" + searchQuery + "\",\r\n    \"page\": 1,\r\n    \"resultsPerPage\": 25\r\n}";
 
     var requestOptions = {
     method: 'POST',
