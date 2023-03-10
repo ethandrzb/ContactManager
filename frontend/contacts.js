@@ -10,7 +10,7 @@ function User(firstName, lastName, email, phone, date){
 function getResults() {
     var searchQuery = document.getElementById('searchbar').value;
 
-    var raw = "{\r\n    \"searchQuery\" : \"" + searchQuery + "\",\r\n    \"page\": \"1\",\r\n    \"resultsPerPage\": \"25\"\r\n}";
+    var raw = "{\r\n    \"searchQuery\" : \"" + searchQuery + "\",\r\n    \"page\": 1,\r\n    \"resultsPerPage\": \"25\"\r\n}";
 
     var requestOptions = {
     method: 'POST',
@@ -46,7 +46,7 @@ function cloneCard(user){
     var cardContents = document.getElementById('contact-details').innerHTML;
     var clone = document.createElement("input");
     clone.type = "preview";
-    clone.value = user.name;
+    clone.value = user.firstName + " " + user.lastName;
     clone.innerHTML = cardContents;
     clone.hidden = false;
     document.getElementById('contactcard').append(clone);
