@@ -9,17 +9,20 @@
         <title>Contacts</title>
     </head>
     <body>
-        <h1 style = "font-size: 50px;">Contacts</h1>
-        <a href = "index.html">login</a>
-        <a href = "add.html">add</a>
-        <a href = "details.html">details</a>
-        <a href = "edit.html">edit</a>
-        <div id = "contacts-list">
-            <div class = "contact-entry">
-                <div class = "name"></div>
-                <div class = "email"></div>
-                <div class = "phone"></div>
-            </div>
+        <div class = "titlesearch">
+            <h1 style = "font-size: 40px; padding-left: 15px; display: inline-block;">Contacts</h1>
+            <input type="text" placeholder= "Search contacts..." class="search">
+            <form class="logbutton" action="index.html">
+                <button type="button">Back to Login</button>
+            </form>
+        </div><br>
+        
+        <div class = "card" id="contactcard">
+            <input type = "preview" value = "John Smith" id = "contact-details" onclick="window.location.href='details.html';">
         </div>
+
+        <input type = "add" value = "+" id = "add-contact" onclick="window.location.href='add.html';">
+        
+        <script src="contacts.js"></script>
     </body>
 </hmtl>
