@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <link rel = "stylesheet" href = "styles.css">
+    <link rel = "stylesheet" href = "detailStyles.css">
     <head>
         <title> Contact Details </title>
         <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     </head>
     <body style = "background-color: #78a4d8">
         <div class ="signin">
-            <form action = "edit.html">
+            <form action = "edit.html" id = "detailsForm">
                 <br><label for="username"> Contact Details</label><br><br>
-                <p style="text-align: left; margin-left: 20px;"><b>Name: </b>John Smith</p>
-                <p style="text-align: left; margin-left: 20px;"><b>Email: </b>john.smith@gmail.com</p>
-                <p style="text-align: left; margin-left: 20px;"><b>Phone: </b> (248)-434-5508</p>
-                <label style="text-align: left; margin-left: -10px;" class="date"><em>Date added: 1/23/24</em></label><br><br>
-                <input type = "submit" value = "EDIT">
+                <p style="text-align: left; margin-left: 20px;" id = "first"><b>First: </b>John</p>
+                <p style="text-align: left; margin-left: 20px;" id = "last"><b>Last: </b>Smith</p>
+                <p style="text-align: left; margin-left: 20px;" id = "email"><b>Email: </b>john.smith@gmail.com</p>
+                <p style="text-align: left; margin-left: 20px;" id = "phone"><b>Phone: </b> (248)-434-5508</p>
+                <label style="text-align: left; margin-left: -10px;" class="date" id = "date"><em>Date added: 1/23/24</em></label><br><br>
+                <input type = "submit" value = "EDIT" id = "editButton">
+                <button onclick="deleteUser()" type = "button" class="delete">DELETE</button>
             </form>
         </div>
         <a href = "contacts.html">
             <button type="button">Back</button>
         </a>
+        <script src="details.js"></script>
     </body>
 </html>
 <!--color for website #ADD8E6-->

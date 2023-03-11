@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <link rel = "stylesheet" href = "styles.css">
+    <link rel = "stylesheet" href = "addStyles.css">
     <head>
         <title> Edit Contact </title>
         <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     </head>
     <body style = "background-color: #78a4d8">
-        <div class ="signin">
-            <form action = "contacts.html">
+        <div class ="add" id = "addForm">
+            <form id = "add">
                 <br><label for="username"> Add New Contact </label><br><br>
-                <label class="prompt"><b>Name:</b></label><input type = "text" placeholder = "John Smith"><br>
-                <label class="prompt"><b>Email:</b></label><input type = "text" placeholder = "john.smith@gmail.com"><br>
-                <label class="phone"><b>Phone:</b></label><input type = "text" placeholder = "(248)-434-5508"><br><br>
-                <label class="date"><em>Date added: 1/23/24</em></label><br><br><br>
-                <input type = "submit" id = "add" value = "SAVE">
+                <label class="prompt"><b>First: </b></label><input type = "text" placeholder = "First Name" id = "firstname"><br>
+                <label class="prompt"><b>Last: </b></label><input type = "text" placeholder = "Last Name" id = "lastname"><br>
+                <label class="prompt"><b>Email:</b></label><input type = "text" placeholder = "First.Last@gmail.com" id = "email"><br>
+                <label class="phone"><b>Phone:</b></label><input type = "text" placeholder = "(000)-000-000" id = "phone"><br><br>
+                <label class="date"><em></em></label><br><br><br>
+                <input type = "submit" id = "add-submit" value = "SAVE">
             </form>
         </div>
         <script src = "contacts.js"></script>
         <a href = "contacts.html">
             <button type="button">Back</button>
         </a>
+        <script src="add.js"></script>
     </body>
 </html>
 <!--color for website #ADD8E6-->
