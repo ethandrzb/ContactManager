@@ -1,5 +1,5 @@
 <?php
-    // Searches for a specified contact from the database
+    // Returns all contacts belonging to the logged-in user that are similar to the search string
     // Small Group Project 9 - Contact Manager
 
     require('database.php');
@@ -26,13 +26,13 @@
         // Return all contacts belonging to a user if no search query is given
         if(empty($searchQuery))
         {
-            $stmt = $dbconn->prepare("SELECT firstName, lastName, phone, email, ContactID FROM Contacts WHERE userID=? OFFSET ? ROWS FETCH NEXT ? ROWS ONLY");
-            $stmt->bind_param("sii", $currentUserID, $offset, $resultsPerPage);
+            $stmt = $dbconn->prepare("SELECT firstName, lastName, phone, email, ContactID FROM Contacts WHERE userID=? LIMIT ? OFFSET ?");
+            $stmt->bind_param("sii", $currentUserID, $resultsPerPage, $offset);
         }
         else
         {
-            $stmt = $dbconn->prepare("SELECT firstName, lastName, phone, email, ContactID FROM Contacts WHERE (userID=?) AND ((firstName LIKE ?) OR (lastName LIKE ?)) OFFSET ? ROWS FETCH NEXT ? ROWS ONLY");
-            $stmt->bind_param("sssii", $currentUserID, $searchQuery, $searchQuery, $offset, $resultsPerPage);
+            $stmt = $dbconn->prepare("SELECT firstName, lastName, phone, email, ContactID FROM Contacts WHERE (userID=?) AND ((firstName LIKE ?) OR (lastName LIKE ?)) LIMIT ? OFFSET ?");
+            $stmt->bind_param("sssii", $currentUserID, $searchQuery, $searchQuery, $resultsPerPage, $offset);
         }
 
         $stmt->execute();
