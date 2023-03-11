@@ -1,5 +1,5 @@
 <?php
-    // Searches for a specified contact from the database
+    // Returns all contacts belonging to the logged-in user that are similar to the search string
     // Small Group Project 9 - Contact Manager
 
     require('database.php');
