@@ -15,10 +15,10 @@ fetch("https://cop4331-2023.xyz/resource/getContact.php", requestOptions)
     .then(response => {
         //response may be diff too
         let contact = JSON.parse(response);
-        document.getElementById('first').innerHTML = contact[0][0];
-        document.getElementById('last').innerHTML = contact[0][1];
-        document.getElementById('email').innerHTML = contact[0][2];
-        document.getElementById('phone').innerHTML = contact[0][3];
+        document.getElementById('first').innerHTML = "First: " + contact[0][0];
+        document.getElementById('last').innerHTML = "Last: " + contact[0][1];
+        document.getElementById('email').innerHTML = "Email: " + contact[0][2];
+        document.getElementById('phone').innerHTML = "Phone: " + contact[0][3];
         document.getElementById('date').innerHTML = "Added on: " + contact[0][4];
     })
 
