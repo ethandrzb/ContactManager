@@ -17,8 +17,8 @@ fetch("https://cop4331-2023.xyz/resource/getContact.php", requestOptions)
         let contact = JSON.parse(response);
         document.getElementById('first').innerHTML = "<b>First: </b>" + contact[0][0];
         document.getElementById('last').innerHTML = "<b>Last: </b>" + contact[0][1];
-        document.getElementById('email').innerHTML = "<b>Email: </b>" + contact[0][2];
-        document.getElementById('phone').innerHTML = "<b>Phone: </b>" + contact[0][3];
+        document.getElementById('email').innerHTML = "<b>Email: </b>" + contact[0][3];
+        document.getElementById('phone').innerHTML = "<b>Phone: </b>" + contact[0][2];
         document.getElementById('date').innerHTML = "<b>Added on: </b>" + contact[0][4];
     })
 

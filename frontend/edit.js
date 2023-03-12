@@ -17,8 +17,8 @@ fetch("https://cop4331-2023.xyz/resource/getContact.php", requestOptions)
     let contact = JSON.parse(response);
     editForm.firstname.value = contact[0][0];
     editForm.lastname.value = contact[0][1];
-    editForm.email.value = contact[0][2];
-    editForm.phone.value = contact[0][3];
+    editForm.email.value = contact[0][3];
+    editForm.phone.value = contact[0][2];
     editForm.date.value = "Date Added: " + contact[0][4];
 })
 
@@ -38,7 +38,7 @@ editForm.addEventListener("submit", (event) => {
         body: raw,
         redirect: 'follow'
       };
-      
+
     fetch("https://cop4331-2023.xyz/resource/editContact.php", requestOptions)
       .then(response => response.text())
       .then(response => {
