@@ -33,11 +33,16 @@ editForm.addEventListener("submit", (event) => {
   
     var raw = "{\r\n    \"contactID\" :\"" + id + "\",\r\n    \"firstName\" : \"" + firstname + "\",\r\n    \"lastName\" : \"" + lastname + "\",\r\n    \"email\" : \"" + email + "\",\r\n    \"phone\" : \"" + phone + "\"\r\n}";
     
-
+    var requestOptions = {
+        method: 'POST',
+        body: raw,
+        redirect: 'follow'
+      };
+      
     fetch("https://cop4331-2023.xyz/resource/editContact.php", requestOptions)
       .then(response => response.text())
       .then(response => {
-            window.location.href = "/details.html"
+            window.location.href = "/details.html?cid=" + id
       })
     event.preventDefault();
   })
