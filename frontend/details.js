@@ -3,6 +3,15 @@ const id = new URLSearchParams(window.location.search).get('cid');
 const detailsForm = document.getElementById("detailsForm");
 
 detailsForm.addEventListener("submit", (event) => { 
+
+    var raw = "{\r\n    \"contactID\" : \"" + id + "\"\r\n}";
+
+    var requestOptions = {
+        method: 'POST',
+        body: raw,
+        redirect: 'follow'
+      };
+
     window.location.href = "/edit.html?cid=" + id;
     event.preventDefault();
 
@@ -15,6 +24,7 @@ detailsForm.addEventListener("submit", (event) => {
         document.getElementById('last').innerHTML = contact.lastname;
         document.getElementById('email').innerHTML = contact.email;
         document.getElementById('phone').innerHTML = contact.phone;
+        document.getElementById('date').innerHTML = contact.dateCreated;
     })
 })
 
