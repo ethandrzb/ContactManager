@@ -23,8 +23,6 @@ Rectangle "Contacts Manager" {
         (View Contact List)
         (Edit Contact Data)
         (Search Contacts)
-
-        (Save Contact)
     }
 }
 
@@ -43,19 +41,17 @@ Rectangle "Contacts Manager" {
 
 ' Register backend/database relations
 (Register Account) --> :Database:
-(Register Account) -- (Generate Authorization Token) : <<include>>
 (Log In) -- (Check Username and Password) : <<include>>
 (Log In) -- (Generate Authorization Token) : <<include>>
 (Check Username and Password) --> :Database:
 (Generate Authorization Token) --> :Database:
 
 ' Contacts Database Relations
-(Save Contact) -- (Add Contact) : <<include>>
+(Add Contact) --> :Database:
 (Search Contacts) --> :Database:
 (View Contact) --> :Database:
 (View Contact List) --> :Database:
 
-(Edit Contact Data) -- (Save Contact) : <<include>>
-(Save Contact) --> :Database:
+(Edit Contact Data) --> :Database:
 
 @enduml
