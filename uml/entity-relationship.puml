@@ -15,6 +15,11 @@ object User {
 
 object Token {
     User ID
+    Issued At Time
+    Not Valid Before Time
+    Expiration Time
+    Issuer
+    Audience
 }
 
 User --> Contact : Searches
