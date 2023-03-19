@@ -336,8 +336,8 @@
 									}
 								},
 								"url": {
-									"raw": "http://cop4331-2023.xyz/resource/register.php",
-									"protocol": "http",
+									"raw": "https://cop4331-2023.xyz/resource/register.php",
+									"protocol": "https",
 									"host": [
 										"cop4331-2023",
 										"xyz"
@@ -369,8 +369,8 @@
 									}
 								},
 								"url": {
-									"raw": "http://cop4331-2023.xyz/resource/login.php",
-									"protocol": "http",
+									"raw": "https://cop4331-2023.xyz/resource/login.php",
+									"protocol": "https",
 									"host": [
 										"cop4331-2023",
 										"xyz"
@@ -402,8 +402,8 @@
 									}
 								},
 								"url": {
-									"raw": "http://cop4331-2023.xyz/ContactManager/resource/login.php",
-									"protocol": "http",
+									"raw": "https://cop4331-2023.xyz/ContactManager/resource/login.php",
+									"protocol": "https",
 									"host": [
 										"cop4331-2023",
 										"xyz"
