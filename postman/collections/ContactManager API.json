@@ -1,0 +1,435 @@
+{
+	"info": {
+		"_postman_id": "a6566be4-116f-4526-ab46-3216b2322dcf",
+		"name": "ContactManager API",
+		"description": "ContactManager API for POOSD SPG9",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "25605799-a6566be4-116f-4526-ab46-3216b2322dcf"
+	},
+	"item": [
+		{
+			"name": "contacts",
+			"item": [
+				{
+					"name": "localhost",
+					"item": [
+						{
+							"name": "Delete Contact",
+							"id": "287b03b8-b8bf-43a4-bd15-a2175e07077e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"contactID\" : 58\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/ContactManager/resource/deleteContact.php",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"ContactManager",
+										"resource",
+										"deleteContact.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Contact",
+							"id": "b675fda9-cae5-4478-8d51-897e00317036",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"contactID\" : 61\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/ContactManager/resource/getContact.php",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"ContactManager",
+										"resource",
+										"getContact.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Contact",
+							"id": "3d136158-06eb-4eb6-a22f-9350bb001523",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"contactID\" : 61,\r\n    \"firstName\" : \"Cool\",\r\n    \"lastName\" : \"Crab\",\r\n    \"email\" : \"crab.rave@gmail.com\",\r\n    \"phone\" : \"222-333-4444\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/ContactManager/resource/editContact.php",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"ContactManager",
+										"resource",
+										"editContact.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Contact",
+							"id": "4782742b-f5db-4c35-8fcc-3a53bb592fe4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\" : \"Bob\",\r\n    \"lastName\" : \"Jones\",\r\n    \"email\" : \"jonesb@gmail.com\",\r\n    \"phone\" : \"135-790-2468\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/ContactManager/resource/addContact.php",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"ContactManager",
+										"resource",
+										"addContact.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search Contact (normal query)",
+							"id": "95e05670-d00c-4c93-a896-c44e5fb48bee",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"searchQuery\" : \"bo\",\r\n    \"page\": \"1\",\r\n    \"resultsPerPage\": \"25\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/ContactManager/resource/searchContact.php",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"ContactManager",
+										"resource",
+										"searchContact.php"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "cd5c82cc-528f-4da0-9019-32fbae38d268"
+				}
+			],
+			"id": "790c8fe6-93ff-4aed-84f7-419be950c7ba",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9e1c50d4-c08b-4975-b009-f52cad6c6c09",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "631c1f21-0a21-4f14-9fe0-43dcbcfbb0b4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "localhost",
+					"item": [
+						{
+							"name": "Register user",
+							"id": "3e227e1f-b5a2-47c8-8b8e-7590022c616b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"test2\",\r\n    \"password\" : \"321\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/ContactManager/resource/register.php",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"ContactManager",
+										"resource",
+										"register.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login user (valid creds)",
+							"id": "1169ae25-74d0-404c-97fe-4bdfc0f6993f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"test\",\r\n    \"password\" : \"1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/ContactManager/resource/login.php",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"ContactManager",
+										"resource",
+										"login.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login user (invalid creds)",
+							"id": "f8077957-6179-4522-bc11-a9072d3e5359",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"testsgad\",\r\n    \"password\" : \"123424gy4\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/ContactManager/resource/login.php",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"ContactManager",
+										"resource",
+										"login.php"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "a351449c-cbee-4b93-a038-536e57d0f9de"
+				},
+				{
+					"name": "remote server",
+					"item": [
+						{
+							"name": "Register user",
+							"id": "410b47ca-7ae9-49bd-9fd9-66e568414294",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"test2\",\r\n    \"password\" : \"321\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://cop4331-2023.xyz/resource/register.php",
+									"protocol": "http",
+									"host": [
+										"cop4331-2023",
+										"xyz"
+									],
+									"path": [
+										"resource",
+										"register.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login user (valid creds)",
+							"id": "4dae45a5-77d4-437d-b03a-060bc136be26",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"test\",\r\n    \"password\" : \"1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://cop4331-2023.xyz/resource/login.php",
+									"protocol": "http",
+									"host": [
+										"cop4331-2023",
+										"xyz"
+									],
+									"path": [
+										"resource",
+										"login.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login user (invalid creds)",
+							"id": "619ed9e8-37a2-404e-b9ca-74b3d291611a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"testsgad\",\r\n    \"password\" : \"123424gy4\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://cop4331-2023.xyz/ContactManager/resource/login.php",
+									"protocol": "http",
+									"host": [
+										"cop4331-2023",
+										"xyz"
+									],
+									"path": [
+										"ContactManager",
+										"resource",
+										"login.php"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "6ea16b84-816f-47f7-937c-f244f9ef2eba"
+				}
+			],
+			"id": "9c59076a-54f0-4f7e-8bd3-5e5c0bafea7f"
+		}
+	],
+	"variable": [
+		{
+			"id": "9e95239a-d6cf-430f-8e87-285407ddef85",
+			"key": "baseUrl",
+			"value": "https://virtserver.swaggerhub.com/thomase/ContactManager/1.0.0",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,204 @@
+################################################################
+#  Documented with reference to Leinecker's Color App example  #
+################################################################
+
+openapi: 3.0.0
+
+info:
+    description: A Simple Contact Manager's API Documentation
+    version: 1.0.0
+    title: A Simple Contact Manager
+    contact:
+        email: 'joeyhodson@knights.ucf.edu'
+    license:
+        name: Apache 2.0
+        url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+paths:
+    /login.php:
+        post:
+            tags:
+                - Users
+            summary: Logs user into contact manager
+            operationId: userLogin
+            description: Logs user into contact manager
+            security: []    # No security required
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/User'
+            responses:
+                200:
+                    description: Logged in successfully
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    token:
+                                        type: string
+                                        format: jwt
+                                        description: JSON web token used for future requests
+                400:
+                    description: Bad request
+    /registerUser.php:
+        post:
+            tags:
+                - Users
+            summary: Creates new user and registers them in the application
+            operationId: registerUser
+            description: Adds a user to the manager's database
+            security: []    # No security required
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/User'
+            responses:
+                200:
+                    description: OK
+                400:
+                    description: Bad request
+                409:
+                    description: User with this name already exists
+    /createContact.php:
+        post:
+            tags:
+                - Contact
+            summary: Adds a contact
+            operationId: createContact
+            description: Adds a contact to the manager's database
+            parameters:
+                - name: contactObject
+                  in: query
+                  description: Add Contact
+                  schema:
+                      $ref: '#/components/schemas/Contact'
+            responses:
+                200:
+                    description: OK
+                400:
+                    description: Bad request
+                401:
+                    $ref: '#/components/responses/UnauthorizedError'
+                404:
+                    description: URL Not Found
+    /editContact.php:
+        put:
+            tags:
+                - Edit
+            summary: Edits a contact
+            operationId: editContact
+            description: Edits a specific contact
+            parameters:
+                - name: contactObject
+                  in: query
+                  description: Contact to be edited
+                  schema:
+                      $ref: '#/components/schemas/Contact'
+            responses:
+                200:
+                    description: OK
+                400:
+                    description: Bad request
+                401:
+                    $ref: '#/components/responses/UnauthorizedError'
+    /deleteContact.php:
+        post:
+            tags:
+                - Delete
+            summary: Deletes a contact
+            operationId: deleteContact
+            description: Deletes a specific contact
+            parameters:
+                - name: contactObject
+                  in: query
+                  description: Contact to be removed
+                  schema:
+                      $ref: '#/components/schemas/Contact'
+            responses:
+                200:
+                    description: OK
+                400:
+                    description: Bad request
+                401:
+                    $ref: '#/components/responses/UnauthorizedError'
+    /searchContact.php:
+        get:
+            tags:
+                - Search
+            summary: Searches contacts
+            operationId: searchContact
+            description: Searches for contact within the manager's database
+            parameters:
+                - name: searchObject
+                  in: query 
+                  description: Contact Search
+                  schema:
+                      $ref: '#/definitions/Search'
+            responses:
+                200:
+                    description: OK
+                400:
+                    description: Bad request
+                401:
+                    $ref: '#/components/responses/UnauthorizedError'
+
+components:
+    securitySchemes:
+        bearerAuth:
+            type: http
+            scheme: bearer
+            bearerFormat: JWT
+    responses:
+        UnauthorizedError:
+            description: Access token is missing or invalid
+    schemas: 
+        Contact:
+            type: object
+            required:
+            - firstName
+            # - lastName
+            - userID
+            - dateCreated
+            - id
+            properties:
+                firstName:
+                    type: string
+                    example: John
+                lastName:
+                    type: string
+                    example: Doe
+                phoneNumber:
+                    type: string
+                    example: 123-456-7890
+                email:
+                    type: string
+                    example: you@mail.com
+                dateCreated:
+                    type: string
+                    format: date-time
+                    example: '2016-08-29T09:12:33.001Z'
+                id:
+                    description: Unique identifier for this contact
+                    type: integer
+                    example: 1
+        User:
+            type: object
+            required:
+            - username
+            - password
+            properties:
+                username:
+                    type: string
+                    example: username123
+                password:
+                    type: string
+                    format: password
+                    example: 9dfgs687sd
+
+security:
+    - bearerAuth: []
