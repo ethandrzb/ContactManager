@@ -1,0 +1,30 @@
+@startuml
+
+object Contact {
+    Contact ID
+    Name
+    Phone Number
+    Email Address
+}
+
+object User {
+    User ID
+    Username
+    Password
+}
+
+object Token {
+    User ID
+    Issued At Time
+    Not Valid Before Time
+    Expiration Time
+    Issuer
+    Audience
+}
+
+User --> Contact : Searches
+Token --> User : Identifies
+User o-- Contact
+User o-- Token
+
+@enduml

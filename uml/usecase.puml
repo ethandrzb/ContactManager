@@ -1,0 +1,57 @@
+@startuml
+left to right direction
+
+:User:
+:New User:
+:Database:
+
+
+:New User: --|> :User:
+
+Rectangle "Contacts Manager" {
+    Rectangle Login {
+        (Register Account)
+        (Log In)
+
+        (Generate Authorization Token)
+        (Check Username and Password)
+    }
+
+    Rectangle Contacts {
+        (Add Contact)
+        (View Contact)
+        (View Contact List)
+        (Edit Contact Data)
+        (Search Contacts)
+    }
+}
+
+(Add Contact) - (Edit Contact Data) : <<extends>>
+(Register Account) - (Log In) : <<include>>
+
+' Logged in user relations
+:User: --> (Add Contact)
+:User: --> (View Contact)
+:User: --> (Edit Contact Data)
+:User: --> (Search Contacts)
+
+' Register and login user relations
+:New User: --> (Register Account)
+:User: --> (Log In)
+
+' Register backend/database relations
+(Register Account) --> :Database:
+(Log In) -- (Check Username and Password) : <<include>>
+(Log In) -- (Generate Authorization Token) : <<include>>
+(Check Username and Password) --> :Database:
+(Generate Authorization Token) --> :Database:
+
+' Contacts Database Relations
+(Add Contact) --> :Database:
+(Search Contacts) --> :Database:
+(View Contact) --> :Database:
+(View Contact List) --> :Database:
+
+(Edit Contact Data) --> :Database:
+
+@enduml
