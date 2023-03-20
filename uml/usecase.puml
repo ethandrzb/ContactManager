@@ -23,6 +23,8 @@ Rectangle "Contacts Manager" {
         (View Contact List)
         (Edit Contact Data)
         (Search Contacts)
+
+        (Check Authorization Token)
     }
 }
 
@@ -44,7 +46,7 @@ Rectangle "Contacts Manager" {
 (Log In) -- (Check Username and Password) : <<include>>
 (Log In) -- (Generate Authorization Token) : <<include>>
 (Check Username and Password) --> :Database:
-(Generate Authorization Token) --> :Database:
+'(Generate Authorization Token) --> :Database:
 
 ' Contacts Database Relations
 (Add Contact) --> :Database:
@@ -52,6 +54,11 @@ Rectangle "Contacts Manager" {
 (View Contact) --> :Database:
 (View Contact List) --> :Database:
 
+(Add Contact) -- (Check Authorization Token) : <<include>>
+(Search Contacts) -- (Check Authorization Token) : <<include>>
+(View Contact) -- (Check Authorization Token) : <<include>>
+
 (Edit Contact Data) --> :Database:
+(Edit Contact Data) -- (Check Authorization Token) : <<include>>
 
 @enduml
